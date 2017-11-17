@@ -1,0 +1,154 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template.xhtml">
+
+	<ui:define name="title">Planos Hosp. Compartilhada</ui:define>
+
+	<ui:define name="conteudo">
+
+		<h1>Planos Serv. Compartilhado</h1>
+
+		<!-- INICIO FORMULARIO -->
+		<form jsf:id="form" method="post" enctype="multipart/form-data">
+		<h:messages></h:messages>
+			<div class="form-group">
+				<label for="codigoPlano">Código: </label> <input type="text"
+					readonly="readonly" jsf:id="id" jsf:value="#{mBeanComp.id}" class="form-control" /> <br />
+
+				<label for="criacao">Data de Criação</label> 
+				<input type="date" placeholder="dd/mm/aaaa" class="form-control" id="criacao"
+				jsf:id="data" jsf:value="#{mBeanComp.data}">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"></f:convertDateTime>
+				</input><br /> 
+				
+				<label for="nomePlano">Nome do Plano: </label>
+				<input type="text" jsf:id="nome" jsf:value="#{mBeanComp.nome}"
+					class="form-control" required="required" /> <br /> 
+				
+				<label for="cpf">Quantidade de dominios: </label> 
+				<input type="text" jsf:id="qtdDom" jsf:value="#{mBeanComp.qtdDom}"
+					class="form-control" /> <br /> 
+					
+					<label>Espaço em disco: </label>
+				<h:selectOneMenu value="#{mBeanComp.hd}" class="custom-select">
+					<f:selectItem itemLabel="Selecione uma Opção" selected="selected" />
+					<f:selectItem itemValue="2GB" itemLabel="2GB" />
+					<f:selectItem itemValue="10GB" itemLabel="10GB" />
+					<f:selectItem itemValue="90GB" itemLabel="90GB" />
+				</h:selectOneMenu>
+
+				<br /> <br /> <label>Quantidade de Base de dados: </label><br />
+				MySQL:<input type="text" id="bd" jsf:value="#{mBeanComp.qtdMsq}"
+					name="mysql" class="form-control" /><br /> SQL:<input type="text"
+					id="bd" jsf:value="#{mBeanComp.qtdSql}" name="tellCel"
+					class="form-control" /> <br /> 
+					
+					<label>Adicional:</label><br />
+				<div class="form-check form-check-inline">
+					<label class="form-check-label"> 
+						<h:selectBooleanCheckbox styleClass="form-check-input"  value="#{mBeanComp.flagEmail}" />
+						Contas de Email
+					</label> <br />
+					<label class="form-check-label">
+						<h:selectBooleanCheckbox styleClass="form-check-input" value="#{mBeanComp.flagSoftc}"/>
+						Softaculous
+					</label>
+				</div>
+				
+				
+				
+				<br /> <label>Servidor: </label> 
+				<label class="custom-control custom-radio"> 
+					<h:selectBooleanCheckbox value="#{mBeanComp.win}" class="custom-control-input" required="true"/> 
+					<span class="custom-control-indicator"></span> 
+					<span class="custom-control-description">Windows</span>
+				</label> 
+				<label class="custom-control custom-radio"> 
+				<h:selectBooleanCheckbox value="#{mBeanComp.linx}"  class="custom-control-input" required="true"/>
+					<span class="custom-control-indicator"></span> <span
+					class="custom-control-description">Linux</span>
+				</label><BR /> 
+				
+				
+				
+				
+			  
+				<label for="Valor">Valor: </label> <input type="text"
+					jsf:id="valor" id="valor" jsf:value="#{mBeanComp.valor}"
+					class="form-control" required="required"> <f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber>
+				</input>
+				<br />
+				
+				<div class="form-group">
+				<label class="col-sm-2 col-form-label">Imagem: </label>
+				<div class="col-sm-10">
+					<input type="file" 
+					jsf:id="imagem" jsf:value="#{mBeanComp.imagem}"
+					class="form-control" />
+				</div>
+				
+				<br/>
+				<h:graphicImage class="img-fluid img-thumbnail" value="ServletImagem?id=#{mBeanComp.id}"
+width="20%" height="20%" url="default.png"></h:graphicImage>
+</div>
+				
+				<div class="form-group">
+					<label for="exampleFormControlTextarea1">Descrição:</label>
+					<textarea class="form-control" jsf:id="exampleFormControlTextarea1"
+						jsf:value="#{mBeanComp.desc}" rows="5" cols="10"></textarea>
+				</div>
+
+
+				<br /> <input type="submit" jsf:id="btnSalvar"
+					jsf:action="#{mBeanComp.salvar}" value="Salvar"
+					class="btn btn-primary" /> <input type="reset" value="Limpar"
+					class="btn btn-secundary" /> <br />
+			</div>
+		</form>
+
+
+
+
+
+		
+	</ui:define>
+
+	<ui:define name="tabela">
+		<tbody align="center">
+
+			<ui:repeat var="plano" value="#{mBeanComp.compList}">
+				<tr>
+					<th scope="row">#{plano.id}</th>
+					<td>#{plano.nome}</td>
+					<td>#{plano.qtdDom}</td>
+					<td>#{plano.hd}</td>
+					<td>#{plano.qtdMsq}</td>
+					<td>#{plano.qtdSql}</td>
+					<td>#{plano.email}</td>
+					<td>#{plano.softc}</td>
+					<td>#{plano.serv}</td>
+					<td>#{plano.valor}</td>
+					<td ><textarea class="form-control" disabled="disabled" rows="3"  style="width:200px;">#{plano.desc}</textarea></td>
+					<td>#{plano.data}</td>
+					<td><input type="submit" jsf:id="btnAlterar"
+					jsf:action="#{mBeanComp.alterar(plano)}" value="Alterar"
+					class="btn btn-primary" /></td>
+					<td><input type="submit" jsf:id="btnExcluir"
+					jsf:action="#{mBeanComp.remover(plano)}" value="Excluir"
+					class="btn btn-primary" /></td>
+
+				</tr>
+
+			</ui:repeat>
+
+		</tbody>
+	</ui:define>
+
+
+</ui:composition>
+</html>

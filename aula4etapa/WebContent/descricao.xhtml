@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	
+	
+<ui:composition template="template2.xhtml">
+
+<ui:define name="title"> Descrição do Plano </ui:define>
+
+<ui:define name="cont-listarprod">
+
+ <h1 class="h1_smart">Plano Smart</h1>
+ <div class="conteudo">
+    <div class="descr" >  
+     <h3>Recursos:</h3><br/>
+      <h5>Hospedagem em servidor Compartilhado</h5>
+      <p>
+        Direito a Hospedar até 1 Site(Domínio).
+      </p>
+      <p>
+        2GB de espaço em disco (Armazenamento de Arquivos e E-mails)
+      </p>
+      <h5>Base de Dados:</h5>
+      <p>
+      1 Base MySQL
+      </p>
+      <h4>Servidores:</h4>
+      <div class="img-serv" align="center">
+        <input type="radio" name="serv-type"/><br/>
+      <img src="linux.png" /><br/>
+      <label class="figure-caption"> Linux</label>
+      </div>
+      
+      <div class="img-serv" align="center">
+        <input type="radio" name="serv-type"/><br/>
+        <img src="win.png"/><br/>
+        <label class="figure-caption"> Windows</label>
+      </div><br/>
+    </div>
+    
+    <div  id="divContainer" align="center">
+      <div class="img_prod_desc">
+      <img  src="prod_img.png"/>
+      </div>
+      <h3>Descrição</h3>
+      <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.</p>
+      <a href="carrinho.jsf" class="btn btn-primary btn-lg btn-block" >Adicionar ao Carrinho</a>
+      <a href="listaProdutos.jsf" class="btn btn-secondary btn-lg btn-block">Voltar para Lista</a>    
+    </div>
+</div> 
+
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,125 @@
+header
+{
+  height:250px;
+  border:1px solid white;
+  text-align: center;
+  padding-top: 90px;
+  background: linear-gradient(to bottom right,#42cfff,#003bff);
+  color:white;
+  text-shadow:   0 2px #000;
+}
+#img_card {
+  background-color: #148eff;
+
+
+  height: 180px;
+  padding-top:60px;
+  padding-left:60px;
+
+  color: white;
+  text-shadow: 0 2px  #000000;
+}
+#img_card_revenda {
+  background-color: #eb6227;
+
+
+  height: 180px;
+  padding-top:60px;
+  padding-left:60px;
+
+  color: white;
+  text-shadow: 0 2px  #000000;
+}
+#img_card_dedicado {
+  background-color: #aa0000;
+
+
+  height: 180px;
+  padding-top:60px;
+  padding-left:60px;
+
+  color: white;
+  text-shadow: 0 2px  #000000;
+}
+#img_prod{
+  width: 180px;
+  position: absolute;
+  top:40px;
+  left:60px;
+}
+#valMensal{
+  left:60px;
+  position: absolute;
+}
+#valMensal2{
+  left:60px;
+  position: absolute;
+}
+#valMensal3{
+  left:60px;
+  position: absolute;
+}
+.img-serv {
+  float: left;
+  margin: 5px;
+
+}
+.img-serv>img{
+  margin: 5px;
+}
+
+#divContainer {
+
+  border: 2px solid #b3b3b3;
+  width: 50%;
+  float: left;
+  margin-left: 30px;
+
+  min-width: 260px;
+  padding: 5px;
+}
+
+.descr {
+  margin-left: 10px;
+  float: left;
+  /*border: 2px solid #b3b3b3;*/
+  padding:10px;
+}
+.h1_smart {
+  background-color: #00aeff;
+  padding: 20px;
+  color: #FFFFFF;
+  text-shadow:  0  3px #000000;
+  border-bottom: 1px solid black;
+  
+}
+.img_prod_desc {
+  border: 1px solid #b3b3b3;
+  margin: 5px;
+  background-color: #148eff;
+
+}
+.img_prod_desc>img{
+  width: 200px;
+
+}
+
+.conteudo {
+  padding: 10px;
+  padding-left: 10%;
+}
+
+#criacao{
+	width:115px; 
+	
+}
+#bd{
+	
+	width:80px;
+}
+
+table, th, td {
+	
+	text-align: center;
+	
+}

@@ -1,0 +1,90 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template.xhtml">
+
+	<ui:define name="title">Cadastro de Planos de Revenda</ui:define>
+
+
+	<ui:define name="conteudo">
+		<h1>Solicitação de Serviços e Recursos</h1>
+		<form method="post">
+			<div class="form-group">
+				<label for="codigoPlano">Código: </label> <input type="text"
+					readonly="readonly" name="codigoPlano" class="form-control" /> <br />
+
+				<label for="criacao">Data de Criação</label> <input type="date"
+					class="form-control" id="criacao" /> <br /> <label for="nomePlano">Nome
+					do Plano: </label> <input type="text" class="form-control" /> <br /> <label
+					for="cpf">Quantidade de dominios: </label> <input type="text"
+					class="form-control" /> <br /> <label>Espaço em disco: </label> <select
+					name="HD" class="custom-select">
+					<option selected="selected">Selecione uma Opção</option>
+					<option value="25GB">25GB</option>
+					<option value="50GB">50GB</option>
+					<option value="100GB">100GB</option>
+				</select> <br />
+				<br /> <label>Quantidade de Base de dados: </label><br /> MySQL:<input
+					type="text" id="bd" name="mysql" class="form-control" /><br /> SQL:<input
+					type="text" id="bd" name="tellCel" class="form-control" /> <br /> <label>Adicional:</label><br />
+				<div class="form-check form-check-inline">
+					<label class="form-check-label"> <input
+						class="form-check-input" type="checkbox" id="inlineCheckbox1"
+						value="Email" name="adicional" />Contas de Email
+					</label> <br /> <label class="form-check-label"> <input
+						class="form-check-input" type="checkbox" id="inlineCheckbox1"
+						value="Email" name="adicional" />Softaculous
+					</label>
+				</div>
+				<br /> <label>Servidor: </label> <label
+					class="custom-control custom-radio"> <input id="radio1"
+					name="serv" type="radio" class="custom-control-input" /> <span
+					class="custom-control-indicator"></span> <span
+					class="custom-control-description">Windows</span>
+				</label> <label class="custom-control custom-radio"> <input
+					id="radio1" name="serv" type="radio" class="custom-control-input" />
+					<span class="custom-control-indicator"></span> <span
+					class="custom-control-description">Linux</span>
+				</label>
+
+				<div class="form-group">
+					<label for="exampleFormControlTextarea1">Descrição:</label>
+					<textarea class="form-control" id="exampleFormControlTextarea1"
+						rows="5" cols="10"></textarea>
+				</div>
+
+
+				<br /> <input type="submit" value="Salvar" class="btn btn-primary" />
+				<input type="reset" value="Limpar" class="btn btn-secundary" /> <br />
+			</div>
+		</form>
+
+		<script>
+			$('#criacao').mask('00/00/0000');
+		</script>
+	</ui:define>
+
+	<ui:define name="tabela">
+		<tbody>
+			<tr>
+				<th scope="row">1</th>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+
+	</ui:define>
+</ui:composition>
+</html>
