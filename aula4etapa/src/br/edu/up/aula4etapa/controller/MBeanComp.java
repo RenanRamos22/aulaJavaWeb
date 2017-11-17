@@ -36,7 +36,7 @@ public class MBeanComp {
 		
 		if(imagem != null && imagem.getSubmittedFileName() != null) {
 			
-			 caminhoImagem = "C:\\Users\\Renan\\Documents\\Imagens_ProjetoJava"+imagem.getSubmittedFileName();
+			 caminhoImagem = "C:\\Users\\Renan\\Documents\\Imagens_ProjetoJava\\"+imagem.getSubmittedFileName();
 			
 			try {
 				byte[] bytesImagem = new byte[(int) imagem.getSize()];

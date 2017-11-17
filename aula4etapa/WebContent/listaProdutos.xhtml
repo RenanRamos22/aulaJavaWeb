@@ -14,6 +14,7 @@
 <h1> Planos de Hospedagem </h1>
 </header>
 <section>
+<ui:repeat var="plano" value="#{mBeanComp.compList}">
  <div class="card" style="width: 20rem;"> 
       <div class="card-img-top"  id="img_card"><img src="prod_img.png" id="img_prod"/><h1 id="valMensal">R$:<label id="lbl_mens">118,80</label></h1> </div>     
       <label class="figure-caption"> Selecione o Período:</label>
@@ -25,7 +26,7 @@
         <option id="valMen" value="1" onclick="mudaValor(1,1);">Mensal</option>
       </select>
       <div class="card-body" >
-        <h4 class="card-title">Plano Smart</h4>
+        <h4 class="card-title"><h:outputText value="#{plano.nome}" /></h4>
         <p class="card-text">- Até 1 Site (Domínio)</p>
         <p class="card-text">- 2GB de espaço em disco</p>
         <p class="card-text">- 1 Base de Dados MySQL</p>
@@ -34,6 +35,7 @@
         <a href="descricao.jsf" class="btn btn-primary">Contratar</a>
       </div>
     </div>
+   </ui:repeat>
     <div class="card" style="width: 20rem;"> 
       <div class="card-img-top" id="img_card_revenda"><img src="prod_img.png" id="img_prod"/><h1 id="valMensal2">R$:<label id="lbl_mens2">118,80</label></h1> </div>     
       <label class="figure-caption"> Selecione o Período:</label>
