@@ -16,7 +16,8 @@
 <section>
 <ui:repeat var="plano" value="#{mBeanComp.compList}">
  <div class="card" style="width: 20rem;"> 
-      <div class="card-img-top"  id="img_card"><img src="prod_img.png" id="img_prod"/><h1 id="valMensal">R$:<label id="lbl_mens">118,80</label></h1> </div>     
+      <div class="card-img-top"  id="img_card" align="center"><h:graphicImage   value="ServletImagem?id=#{plano.id}"
+ ></h:graphicImage><h1 id="valMensal">R$:<label id="lbl_mens"><h:outputText value="#{plano.valor}" id="valor" ><f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber></h:outputText></label></h1> </div>     
       <label class="figure-caption"> Selecione o Período:</label>
       <select class="custom-select" id="period" >
         
@@ -27,11 +28,11 @@
       </select>
       <div class="card-body" >
         <h4 class="card-title"><h:outputText value="#{plano.nome}" /></h4>
-        <p class="card-text">- Até 1 Site (Domínio)</p>
-        <p class="card-text">- 2GB de espaço em disco</p>
-        <p class="card-text">- 1 Base de Dados MySQL</p>
+        <p class="card-text">- Até <h:outputText value="#{plano.qtdDom}" /> Site (Domínio)</p>
+        <p class="card-text">- <h:outputText value="#{plano.hd}" /> de espaço em disco</p>
+        <p class="card-text">- <h:outputText value="#{plano.qtdMsq}" /> Base de Dados MySQL</p>
         <p class="card-text">- Contas de e-mail</p>
-        <p class="card-text">- Windows ou Linux</p>
+        <p class="card-text">- <h:outputText value="#{plano.serv}" /></p>
         <a href="descricao.jsf" class="btn btn-primary">Contratar</a>
       </div>
     </div>

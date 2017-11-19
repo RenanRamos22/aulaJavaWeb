@@ -41,11 +41,13 @@ header
   color: white;
   text-shadow: 0 2px  #000000;
 }
-#img_prod{
-  width: 180px;
+.card-img-top > img{
+  max-height:30%;
+  max-width:30%;
+  
   position: absolute;
-  top:40px;
-  left:60px;
+  top:5%;
+  left:30%;
 }
 #valMensal{
   left:60px;

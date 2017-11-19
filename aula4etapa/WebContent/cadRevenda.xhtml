@@ -2,7 +2,7 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="template.xhtml">
@@ -12,56 +12,103 @@
 
 	<ui:define name="conteudo">
 		<h1>Solicitação de Serviços e Recursos</h1>
-		<form method="post">
+		<form jsf:id="form" method="post" enctype="multipart/form-data">
+		<h:messages></h:messages>
 			<div class="form-group">
 				<label for="codigoPlano">Código: </label> <input type="text"
-					readonly="readonly" name="codigoPlano" class="form-control" /> <br />
+					readonly="readonly" jsf:id="id" jsf:value="#{mBeanRevenda.id}" class="form-control" /> <br />
 
-				<label for="criacao">Data de Criação</label> <input type="date"
-					class="form-control" id="criacao" /> <br /> <label for="nomePlano">Nome
-					do Plano: </label> <input type="text" class="form-control" /> <br /> <label
-					for="cpf">Quantidade de dominios: </label> <input type="text"
-					class="form-control" /> <br /> <label>Espaço em disco: </label> <select
-					name="HD" class="custom-select">
-					<option selected="selected">Selecione uma Opção</option>
-					<option value="25GB">25GB</option>
-					<option value="50GB">50GB</option>
-					<option value="100GB">100GB</option>
-				</select> <br />
-				<br /> <label>Quantidade de Base de dados: </label><br /> MySQL:<input
-					type="text" id="bd" name="mysql" class="form-control" /><br /> SQL:<input
-					type="text" id="bd" name="tellCel" class="form-control" /> <br /> <label>Adicional:</label><br />
+				<label for="criacao">Data de Criação</label> 
+				<input type="date" placeholder="dd/mm/aaaa" class="form-control" id="criacao"
+				jsf:id="data" jsf:value="#{mBeanRevenda.data}">
+				<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT-03:00"></f:convertDateTime>
+				</input><br /> 
+				
+				<label for="nomePlano">Nome do Plano: </label>
+				<input type="text" jsf:id="nome" jsf:value="#{mBeanRevenda.nome}"
+					class="form-control" required="required" /> <br /> 
+				
+				<label for="cpf">Quantidade de dominios: </label> 
+				<input type="text" jsf:id="qtdDom" jsf:value="#{mBeanRevenda.qtdDom}"
+					class="form-control" /> <br /> 
+					
+					<label>Espaço em disco: </label>
+				<h:selectOneMenu value="#{mBeanRevenda.hd}" class="custom-select">
+					<f:selectItem itemLabel="Selecione uma Opção" selected="selected" />
+					<f:selectItem itemValue="2GB" itemLabel="2GB" />
+					<f:selectItem itemValue="10GB" itemLabel="10GB" />
+					<f:selectItem itemValue="90GB" itemLabel="90GB" />
+				</h:selectOneMenu>
+
+				<br /> <br /> <label>Quantidade de Base de dados: </label><br />
+				MySQL:<input type="text" id="bd" jsf:value="#{mBeanRevenda.qtdMsq}"
+					name="mysql" class="form-control" /><br /> SQL:<input type="text"
+					id="bd" jsf:value="#{mBeanRevenda.qtdSql}" name="tellCel"
+					class="form-control" /> <br /> 
+					
+					<label>Adicional:</label><br />
 				<div class="form-check form-check-inline">
-					<label class="form-check-label"> <input
-						class="form-check-input" type="checkbox" id="inlineCheckbox1"
-						value="Email" name="adicional" />Contas de Email
-					</label> <br /> <label class="form-check-label"> <input
-						class="form-check-input" type="checkbox" id="inlineCheckbox1"
-						value="Email" name="adicional" />Softaculous
+					<label class="form-check-label"> 
+						<h:selectBooleanCheckbox styleClass="form-check-input"  value="#{mBeanRevenda.flagEmail}" />
+						Contas de Email
+					</label> <br />
+					<label class="form-check-label">
+						<h:selectBooleanCheckbox styleClass="form-check-input" value="#{mBeanRevenda.flagSoftc}"/>
+						Softaculous
 					</label>
 				</div>
-				<br /> <label>Servidor: </label> <label
-					class="custom-control custom-radio"> <input id="radio1"
-					name="serv" type="radio" class="custom-control-input" /> <span
-					class="custom-control-indicator"></span> <span
-					class="custom-control-description">Windows</span>
-				</label> <label class="custom-control custom-radio"> <input
-					id="radio1" name="serv" type="radio" class="custom-control-input" />
+				
+				
+				
+				<br /> <label>Servidor: </label> 
+				<label class="custom-control custom-radio"> 
+					<h:selectBooleanCheckbox value="#{mBeanRevenda.win}" class="custom-control-input" required="true"/> 
+					<span class="custom-control-indicator"></span> 
+					<span class="custom-control-description">Windows</span>
+				</label> 
+				<label class="custom-control custom-radio"> 
+				<h:selectBooleanCheckbox value="#{mBeanRevenda.linx}"  class="custom-control-input" required="true"/>
 					<span class="custom-control-indicator"></span> <span
 					class="custom-control-description">Linux</span>
-				</label>
-
+				</label><BR /> 
+				
+				
+				
+				
+			  
+				<label for="Valor">Valor: </label> <input type="text"
+					jsf:id="valor" id="valor" jsf:value="#{mBeanRevenda.valor}"
+					class="form-control" required="required"> <f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber>
+				</input>
+				<br />
+				
+				<div class="form-group">
+				<label class="col-sm-2 col-form-label">Imagem: </label>
+				<div class="col-sm-10">
+					<input type="file" 
+					jsf:id="imagem" jsf:value="#{mBeanRevenda.imagem}"
+					class="form-control" />
+				</div>
+				
+				<br/>
+				<h:graphicImage class="img-fluid img-thumbnail" value="ServletImagem?id=#{mBeanRevenda.id}"
+width="20%" height="20%" ></h:graphicImage>
+</div>
+				
 				<div class="form-group">
 					<label for="exampleFormControlTextarea1">Descrição:</label>
-					<textarea class="form-control" id="exampleFormControlTextarea1"
-						rows="5" cols="10"></textarea>
+					<textarea class="form-control" jsf:id="exampleFormControlTextarea1"
+						jsf:value="#{mBeanRevenda.desc}" rows="5" cols="10"></textarea>
 				</div>
 
 
-				<br /> <input type="submit" value="Salvar" class="btn btn-primary" />
-				<input type="reset" value="Limpar" class="btn btn-secundary" /> <br />
+				<br /> <input type="submit" jsf:id="btnSalvar"
+					jsf:action="#{mBeanRevenda.salvar}" value="Salvar"
+					class="btn btn-primary" /> <input type="reset" value="Limpar"
+					class="btn btn-secundary" /> <br />
 			</div>
 		</form>
+
 
 		<script>
 			$('#criacao').mask('00/00/0000');
@@ -69,20 +116,29 @@
 	</ui:define>
 
 	<ui:define name="tabela">
-		<tbody>
+		<tbody align="center">
+		<ui:repeat var="plano" value="#{mBeanRevenda.revList}">
 			<tr>
-				<th scope="row">1</th>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<th scope="row">#{plano.id}</th>
+					<td>#{plano.nome}</td>
+					<td>#{plano.qtdDom}</td>
+					<td>#{plano.hd}</td>
+					<td>#{plano.qtdMsq}</td>
+					<td>#{plano.qtdSql}</td>
+					<td>#{plano.email}</td>
+					<td>#{plano.softc}</td>
+					<td>#{plano.serv}</td>
+					<td>#{plano.valor}</td>
+					<td ><textarea class="form-control" disabled="disabled" rows="3"  style="width:200px;">#{plano.desc}</textarea></td>
+					<td>#{plano.data}</td>
+					<td><input type="submit" jsf:id="btnAlterar"
+					jsf:action="#{mBeanComp.alterar(plano)}" value="Alterar"
+					class="btn btn-primary" /></td>
+					<td><input type="submit" jsf:id="btnExcluir"
+					jsf:action="#{mBeanComp.remover(plano)}" value="Excluir"
+					class="btn btn-primary" /></td>
 			</tr>
+			</ui:repeat>
 		</tbody>
 
 	</ui:define>

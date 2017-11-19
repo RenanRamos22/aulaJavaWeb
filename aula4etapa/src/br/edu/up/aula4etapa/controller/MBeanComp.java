@@ -3,6 +3,7 @@ package br.edu.up.aula4etapa.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -54,6 +55,8 @@ public class MBeanComp {
 		
 		PlanoComp plano = new PlanoComp();
 		plano.setId(this.id);
+		
+		
 		plano.setData(data);
 		plano.setNome(nome);
 		plano.setQtdDom(qtdDom);
