@@ -22,8 +22,8 @@
 
 				<label for="criacao">Data de Criação</label> 
 				<input type="date" placeholder="dd/mm/aaaa" class="form-control" id="criacao"
-				jsf:id="data" jsf:value="#{mBeanComp.data}">
-				
+				 jsf:value="#{mBeanComp.data}">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"></f:convertDateTime>
 				</input><br /> 
 				
 				<label for="nomePlano">Nome do Plano: </label>
@@ -85,7 +85,7 @@
 				<br />
 				
 				<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Imagem: </label>
+				<label class="col-sm-1 col-form-label">Imagem: </label>
 				<div class="col-sm-10">
 					<input type="file" 
 					jsf:id="imagem" jsf:value="#{mBeanComp.imagem}"
@@ -106,7 +106,8 @@ width="20%" height="20%" ></h:graphicImage>
 
 				<br /> <input type="submit" jsf:id="btnSalvar"
 					jsf:action="#{mBeanComp.salvar}" value="Salvar"
-					class="btn btn-primary" /> <input type="reset" value="Limpar"
+					class="btn btn-primary" /> <input type="button" jsf:id="btnLimpar"
+					jsf:action="#{mBeanRevenda.limpar}" value="Limpar"
 					class="btn btn-secundary" /> <br />
 			</div>
 		</form>

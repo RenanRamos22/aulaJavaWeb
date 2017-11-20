@@ -89,7 +89,9 @@
 
 
 				<br /> <input type="submit" jsf:id="btnSalvar" jsf:action="#{mBeanDedic.salvar}"  value="Salvar" class="btn btn-primary" />
-				<h:commandButton type="reset" value="Limpar" class="btn btn-secundary" /> <br />
+				<input type="button" jsf:id="btnLimpar"
+					jsf:action="#{mBeanRevenda.limpar}" value="Limpar"
+					class="btn btn-secundary" /> <br />
 			</div>
 		</form>
 		<script>

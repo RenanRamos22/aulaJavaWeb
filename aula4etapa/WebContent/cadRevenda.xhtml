@@ -11,7 +11,7 @@
 
 
 	<ui:define name="conteudo">
-		<h1>Solicitação de Serviços e Recursos</h1>
+		<h1>Planos de Revenda</h1>
 		<form jsf:id="form" method="post" enctype="multipart/form-data">
 		<h:messages></h:messages>
 			<div class="form-group">
@@ -82,8 +82,8 @@
 				</input>
 				<br />
 				
-				<div class="form-group">
-				<label class="col-sm-2 col-form-label">Imagem: </label>
+				<div class="form-group row">
+				<label class="col-sm-1 col-form-label">Imagem: </label>
 				<div class="col-sm-10">
 					<input type="file" 
 					jsf:id="imagem" jsf:value="#{mBeanRevenda.imagem}"
@@ -104,7 +104,8 @@ width="20%" height="20%" ></h:graphicImage>
 
 				<br /> <input type="submit" jsf:id="btnSalvar"
 					jsf:action="#{mBeanRevenda.salvar}" value="Salvar"
-					class="btn btn-primary" /> <input type="reset" value="Limpar"
+					class="btn btn-primary" /> <input type="button" jsf:id="btnLimpar"
+					jsf:action="#{mBeanRevenda.limpar}" value="Limpar"
 					class="btn btn-secundary" /> <br />
 			</div>
 		</form>
@@ -132,10 +133,10 @@ width="20%" height="20%" ></h:graphicImage>
 					<td ><textarea class="form-control" disabled="disabled" rows="3"  style="width:200px;">#{plano.desc}</textarea></td>
 					<td>#{plano.data}</td>
 					<td><input type="submit" jsf:id="btnAlterar"
-					jsf:action="#{mBeanComp.alterar(plano)}" value="Alterar"
+					jsf:action="#{mBeanRevenda.alterar(plano)}" value="Alterar"
 					class="btn btn-primary" /></td>
 					<td><input type="submit" jsf:id="btnExcluir"
-					jsf:action="#{mBeanComp.remover(plano)}" value="Excluir"
+					jsf:action="#{mBeanRevenda.remover(plano)}" value="Excluir"
 					class="btn btn-primary" /></td>
 			</tr>
 			</ui:repeat>

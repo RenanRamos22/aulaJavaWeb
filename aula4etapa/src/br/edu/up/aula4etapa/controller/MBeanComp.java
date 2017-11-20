@@ -21,7 +21,7 @@ import com.sun.faces.context.RequestCookieMap;
 import br.edu.up.aula4etapa.dao.PlanoCompartilhadoDao;
 import br.edu.up.aula4etapa.entity.PlanoComp;
 
-@ManagedBean(name = "mBeanComp")
+@ManagedBean
 public class MBeanComp {
 
 	static private ArrayList<PlanoComp> compList = new ArrayList<PlanoComp>(); 
@@ -68,28 +68,27 @@ public class MBeanComp {
 		plano.setImgUrl(caminhoImagem);
 		
 		
-		//Logica para sinalizar se o plano terá os serviços de contas de e-mail ou softaculous
+		//Logica para sinalizar se o plano terï¿½ os serviï¿½os de contas de e-mail ou softaculous
 		if(flagEmail == false  && flagSoftc == false) 
 		{
-			plano.setEmail("Não");
-			plano.setSoftc("Não");
+			plano.setEmail("");
+			plano.setSoftc("");
 		}
 		if (flagEmail == true && flagSoftc == true) 
 		{
-				plano.setSoftc("Sim");
-				plano.setEmail("Sim");
+				plano.setSoftc("Softaculous");
+				plano.setEmail("Contas de E-mail");
 		}
 		if(flagEmail == false && flagSoftc == true)
 		{
-			plano.setSoftc("Sim");
-			plano.setEmail("Não");
+			plano.setSoftc("Softaculous");
+			plano.setEmail("");
 		}	
 		if(flagEmail == true && flagSoftc == false)
 		{
-			plano.setSoftc("Não");
-			plano.setEmail("Sim");
+			plano.setSoftc("");
+			plano.setEmail("Contas de E-mail");
 		}
-		
 		//A mesma logica aplicada acima para os checkbox dos servidores
 		if(win && linx) 
 		{
@@ -115,8 +114,23 @@ public class MBeanComp {
 			new PlanoCompartilhadoDao().alterar(plano);
 		}
 		compList = new PlanoCompartilhadoDao().listar();
+		limpar();
 	}
 	
+	public void limpar() {
+		this.id = null;
+		this.data = null;
+		this.nome = "";
+		this.qtdDom = "";
+		this.hd = "";
+		this.qtdMsq = null;
+		this.qtdSql = null;
+		this.valor =null;
+		this.desc = "";
+		this.serv = "";
+		
+	}
+
 	public void alterar(PlanoComp plano) {
 		this.id = plano.getId();
 		this.data = plano.getData();

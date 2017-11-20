@@ -13,6 +13,7 @@ import org.apache.catalina.core.ApplicationPart;
 
 import br.edu.up.aula4etapa.dao.PlanoCompartilhadoDao;
 import br.edu.up.aula4etapa.dao.RevendaDao;
+import br.edu.up.aula4etapa.entity.PlanoComp;
 import br.edu.up.aula4etapa.entity.Revenda;
 
 
@@ -61,26 +62,26 @@ String caminhoImagem = "";
 	plano.setDesc(desc);
 	plano.setImgUrl(caminhoImagem);
 	
-	//Logica para sinalizar se o plano terá os serviços de contas de e-mail ou softaculous
+	//Logica para sinalizar se o plano terï¿½ os serviï¿½os de contas de e-mail ou softaculous
 			if(flagEmail == false  && flagSoftc == false) 
 			{
-				plano.setEmail("Não");
-				plano.setSoftc("Não");
+				plano.setEmail("");
+				plano.setSoftc("");
 			}
 			if (flagEmail == true && flagSoftc == true) 
 			{
-					plano.setSoftc("Sim");
-					plano.setEmail("Sim");
+					plano.setSoftc("Softaculous");
+					plano.setEmail("Contas de E-mail");
 			}
 			if(flagEmail == false && flagSoftc == true)
 			{
-				plano.setSoftc("Sim");
-				plano.setEmail("Não");
+				plano.setSoftc("Softaculous");
+				plano.setEmail("");
 			}	
 			if(flagEmail == true && flagSoftc == false)
 			{
-				plano.setSoftc("Não");
-				plano.setEmail("Sim");
+				plano.setSoftc("");
+				plano.setEmail("Contas de E-mail");
 			}
 			
 			//A mesma logica aplicada acima para os checkbox dos servidores
@@ -108,6 +109,41 @@ String caminhoImagem = "";
 				new RevendaDao().alterar(plano);
 			}
 			revList = new RevendaDao().listar();
+			limpar();
+	}
+	
+	public void limpar() {
+		this.id = null;
+		this.data = null;
+		this.nome = "";
+		this.qtdDom = "";
+		this.hd = "";
+		this.qtdMsq = null;
+		this.qtdSql = null;
+		this.valor =null;
+		this.desc = "";
+		this.serv = "";
+		
+	}
+	
+	public void alterar(Revenda plano) {
+		this.id = plano.getId();
+		this.data = plano.getData();
+		this.nome = plano.getNome();
+		this.qtdDom = plano.getQtdDom();
+		this.hd = plano.getHd();
+		this.qtdMsq = plano.getQtdMsq();
+		this.qtdSql = plano.getQtdSql();
+		this.valor = plano.getValor();
+		this.desc = plano.getDesc();
+		this.serv = plano.getServ();
+	}
+	
+	public void remover(Revenda plano) {
+		
+		new RevendaDao().remover(plano.getId());
+		revList = new RevendaDao().listar();
+		
 	}
 	private Integer id;
 	private Date data;

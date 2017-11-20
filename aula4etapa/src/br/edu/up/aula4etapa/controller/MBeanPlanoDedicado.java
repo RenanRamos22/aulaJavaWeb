@@ -34,8 +34,8 @@ public class MBeanPlanoDedicado {
 		dedic.setDescr(descr);
 		
 		// Se o checkbox dominio ilimitado estiver marcado
-		// Então é adicionado a string na lista
-		// Se não estiver então é atribuido a lista a quantidade digitada
+		// Entï¿½o ï¿½ adicionado a string na lista
+		// Se nï¿½o estiver entï¿½o ï¿½ atribuido a lista a quantidade digitada
 		if(domIlim) {
 		
 		dedic.setIlim("Ilimitado");
@@ -48,9 +48,9 @@ public class MBeanPlanoDedicado {
 		}
 		
 		if(ipDedic) {
-			dedic.setIp("Sim");
+			dedic.setIp("IP Dedicado");
 		}else {
-			dedic.setIp("Não");
+			dedic.setIp("");
 		}
 		
 		//Verificando qual tipo de servidor foi selecionado
