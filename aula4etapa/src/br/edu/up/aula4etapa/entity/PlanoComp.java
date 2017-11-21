@@ -29,6 +29,7 @@ public class PlanoComp {
 	private String serv;
 	private BigDecimal valor;
 	private String imgUrl;
+	private String banco;
 	
 	@Column(length = 100000)
 	@Lob
@@ -114,6 +115,12 @@ public class PlanoComp {
 	}
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+	public String getBanco() {
+		return banco;
+	}
+	public void setBanco(String banco) {
+		this.banco = banco;
 	}
 	
 	
