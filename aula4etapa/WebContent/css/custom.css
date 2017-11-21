@@ -10,14 +10,15 @@ header
 }
 #img_card {
   background-color: #148eff;
-
-
   height: 180px;
   padding-top:60px;
   padding-left:60px;
-
   color: white;
   text-shadow: 0 2px  #000000;
+}
+
+#btnLimpar{
+	margin-left: 10px;
 }
 #img_card_revenda {
   background-color: #eb6227;

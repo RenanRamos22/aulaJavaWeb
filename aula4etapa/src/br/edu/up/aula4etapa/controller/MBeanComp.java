@@ -68,6 +68,7 @@ public class MBeanComp {
 		plano.setImgUrl(caminhoImagem);
 		
 		
+	
 		//Logica para sinalizar se o plano ter� os servi�os de contas de e-mail ou softaculous
 		if(flagEmail == false  && flagSoftc == false) 
 		{
@@ -107,6 +108,8 @@ public class MBeanComp {
 		{
 			plano.setServ("Windows");
 		}
+		
+		
 		
 		if(this.id == null) {
 			new PlanoCompartilhadoDao().salvar(plano);
@@ -151,6 +154,19 @@ public class MBeanComp {
 		
 	}
 	
+	public void carregarPlano(PlanoComp plano) {
+		this.id = plano.getId();
+		this.data = plano.getData();
+		this.nome = plano.getNome();
+		this.qtdDom = plano.getQtdDom();
+		this.hd = plano.getHd();
+		this.qtdMsq = plano.getQtdMsq();
+		this.qtdSql = plano.getQtdSql();
+		this.valor = plano.getValor();
+		this.desc = plano.getDesc();
+		this.serv = plano.getServ();
+	}
+	
 	private Integer id;
 	private Date data;
 	private String nome;
@@ -168,9 +184,18 @@ public class MBeanComp {
 	private BigDecimal valor;
 	private String desc;
 	private ApplicationPart imagem;
+	private String banco;
 	
 	
 	
+	public String getBanco() {
+		return banco;
+	}
+
+	public void setBanco(String banco) {
+		this.banco = banco;
+	}
+
 	public String getEmail() {
 		return email;
 	}
