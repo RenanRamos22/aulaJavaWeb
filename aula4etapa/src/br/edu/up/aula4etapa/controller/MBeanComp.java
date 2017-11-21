@@ -21,7 +21,7 @@ import com.sun.faces.context.RequestCookieMap;
 import br.edu.up.aula4etapa.dao.PlanoCompartilhadoDao;
 import br.edu.up.aula4etapa.entity.PlanoComp;
 
-@ManagedBean
+@ManagedBean(name = "mBeanComp")
 public class MBeanComp {
 
 	static private ArrayList<PlanoComp> compList = new ArrayList<PlanoComp>(); 
@@ -128,7 +128,7 @@ public class MBeanComp {
 		this.valor =null;
 		this.desc = "";
 		this.serv = "";
-		
+		compList = new PlanoCompartilhadoDao().listar();
 	}
 
 	public void alterar(PlanoComp plano) {
