@@ -10,8 +10,11 @@
 	<ui:define name="title">Listagem de Produtos  </ui:define>
 	
 <ui:define name="cont-listarprod">
+
 <form jsf:id="form">
+
  <h1 class="h1_smart">Carrinho</h1>
+ 
  <div class="content">
 
 <table class="table table-hover" >
@@ -27,15 +30,18 @@
     </tr>
   </thead>
   <tbody>
-  <ui:repeat var="item" value="#{mBeanCarrinho.itens}"></ui:repeat>
+  
+  <ui:repeat var="item" value="#{mBeanCarrinho.itens}">
+  
     <tr>
-      <th scope="row">1</th>
-      <td><img src="prod_img.png" style="width:100px;"/></td>
-      <td>#{item.plataforma}</td>
-      <td>dominio.com.br</td>
-      <td>R$118,80/Anual</td>
+      <th scope="row">#{item.planocomp.id}</th>
+      <td><h:graphicImage style="width:100px;"  value="ServletImagem?id=#{item.planocomp.id}"/></td>
+      <td>#{item.planocomp.nome}</td>
+      <td>#{item.dominio}</td>
+      <td>R$<h:outputText value="#{item.planocomp.valor}"> <f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber></h:outputText></td>
       <td><button type="button" class="btn btn-danger">Remover</button></td>
     </tr>
+    </ui:repeat>
     <tr>
     	<th scope="row"></th>
     	<td ><button type="button" onclick="window.alert('Finalizado com Sucesso')" class="btn btn-primary btn-lg " >Finalizar</button></td>

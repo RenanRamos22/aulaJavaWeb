@@ -15,7 +15,8 @@ public class ItemComp {
 	private PlanoComp planocomp;
 	private Integer quantidade;
 	private String plataforma;
-	
+	private String period;
+	private String dominio;
 	
 	
 	public Integer getId() {
@@ -24,7 +25,19 @@ public class ItemComp {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	
+	public String getDominio() {
+		return dominio;
+	}
+	public void setDominio(String dominio) {
+		this.dominio = dominio;
+	}
+	public String getPeriod() {
+		return period;
+	}
+	public void setPeriod(String period) {
+		this.period = period;
+	}
 	public Integer getQuantidade() {
 		return quantidade;
 	}
