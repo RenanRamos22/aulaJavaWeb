@@ -12,47 +12,58 @@
 <ui:define name="title"> Descrição do Plano </ui:define>
 
 <ui:define name="cont-listarprod">
-
- <h1 class="h1_smart">Plano Smart</h1>
+<form jsf:id="form">
+<h:outputText value="#{mBeanDedic.msg}"/>
+<input type="hidden" jsf:id="id" jsf:value="#{mBeanComp.id}"/>
+ <h1 class="h1_smart"><h:outputText value="#{mBeanComp.nome}"></h:outputText></h1>
  <div class="conteudo">
     <div class="descr" >  
      <h3>Recursos:</h3><br/>
       <h5>Hospedagem em servidor Compartilhado</h5>
       <p>
-        Direito a Hospedar até 1 Site(Domínio).
+        Direito a Hospedar até <h:outputText value="#{mBeanComp.qtdDom}"/> Site(Domínio).
       </p>
       <p>
-        2GB de espaço em disco (Armazenamento de Arquivos e E-mails)
+        <h:outputText value="#{mBeanComp.hd}"/> de espaço em disco (Armazenamento de Arquivos e E-mails)
       </p>
       <h5>Base de Dados:</h5>
       <p>
-      1 Base MySQL
+      <h:outputText value="#{mBeanComp.qtdMsq}"/> Base MySQL<br/>
+      <h:outputText value="#{mBeanComp.qtdSql}"/> Base SQL
       </p>
       <h4>Servidores:</h4>
-      <div class="img-serv" align="center">
-        <input type="radio" name="serv-type"/><br/>
-      <img src="linux.png" /><br/>
-      <label class="figure-caption"> Linux</label>
-      </div>
       
       <div class="img-serv" align="center">
-        <input type="radio" name="serv-type"/><br/>
-        <img src="win.png"/><br/>
-        <label class="figure-caption"> Windows</label>
-      </div><br/>
+      <label class="custom-control custom-radio"> 
+					<h:selectBooleanCheckbox value="#{mBeanCarrinho.win}" class="custom-control-input" required="true"/> 
+					<span class="custom-control-indicator"></span> 
+					<span class="custom-control-description">Windows</span>
+					
+				</label> 
+				<br/>
+				<img src="win.png"/>
+				</div>
+				<div class="img-serv" align="center">
+				<label class="custom-control custom-radio"> 
+				<h:selectBooleanCheckbox value="#{mBeanCarrinho.linx}"  class="custom-control-input" required="true"/>
+					<span class="custom-control-indicator"></span> <span
+					class="custom-control-description">Linux</span>
+				</label><br/>
+				<img src="linux.png"/>
+				</div>
     </div>
     
     <div  id="divContainer" align="center">
       <div class="img_prod_desc">
-      <img  src="prod_img.png"/>
+     <h:graphicImage   value="ServletImagem?id=#{mBeanComp.id}"/>
       </div>
       <h3>Descrição</h3>
-      <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.</p>
-      <a href="carrinho.jsf" class="btn btn-primary btn-lg btn-block" >Adicionar ao Carrinho</a>
+      <p class="text-justify"><h:outputText value="#{mBeanComp.desc}"/></p>
+      <input type="submit" class="btn btn-primary btn-lg btn-block" value="Adicionar ao Carrinho" jsf:action="#{mBeanCarrinho.adicionar(mBeanComp.id)}"/>
       <a href="listaProdutos.jsf" class="btn btn-secondary btn-lg btn-block">Voltar para Lista</a>    
     </div>
 </div> 
-
+</form>
 </ui:define>
 </ui:composition>
 </html>

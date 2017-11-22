@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import aula4etapa.Jogo;
 import br.edu.up.aula4etapa.entity.PlanoComp;
 
 public class PlanoCompartilhadoDao {

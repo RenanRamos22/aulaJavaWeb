@@ -15,7 +15,8 @@
 		<h1>Planos Servidores Dedicados</h1>
 		<form method="post" jsf:id="form">
 		<h:messages></h:messages>
-		<label jsf:id="msg" jsf:value="#{mBeanDedic.msg}"></label>
+		<h:outputText value="#{mBeanDedic.msg}"/>
+		
 			<div class="form-group">
 				<label for="codigoPlano">Código: </label> <input type="text"
 					readonly="readonly" jsf:id="id" jsf:value="#{mBeanDedic.id}" name="codigoPlano" class="form-control" /> <br />

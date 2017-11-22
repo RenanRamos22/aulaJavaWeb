@@ -154,7 +154,7 @@ public class MBeanComp {
 		
 	}
 	
-	public void carregarPlano(PlanoComp plano) {
+	public String carregarPlano(PlanoComp plano) {
 		this.id = plano.getId();
 		this.data = plano.getData();
 		this.nome = plano.getNome();
@@ -165,6 +165,8 @@ public class MBeanComp {
 		this.valor = plano.getValor();
 		this.desc = plano.getDesc();
 		this.serv = plano.getServ();
+		
+		return "descricao.jsf";
 	}
 	
 	private Integer id;

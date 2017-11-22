@@ -10,7 +10,7 @@
 	<ui:define name="title">Listagem de Produtos  </ui:define>
 	
 <ui:define name="cont-listarprod">
-
+<form jsf:id="form">
  <h1 class="h1_smart">Carrinho</h1>
  <div class="content">
 
@@ -18,7 +18,7 @@
   <thead>
    
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Codigo do produto</th>
       <th scope="col">imagem</th>
       <th scope="col">Plano</th>
       <th scope="col">Dominio</th>
@@ -27,10 +27,11 @@
     </tr>
   </thead>
   <tbody>
+  <ui:repeat var="item" value="#{mBeanCarrinho.itens}"></ui:repeat>
     <tr>
       <th scope="row">1</th>
       <td><img src="prod_img.png" style="width:100px;"/></td>
-      <td>Smart</td>
+      <td>#{item.plataforma}</td>
       <td>dominio.com.br</td>
       <td>R$118,80/Anual</td>
       <td><button type="button" class="btn btn-danger">Remover</button></td>
@@ -52,6 +53,7 @@
          
    
 </div>    
+</form>
 </ui:define>
 </ui:composition>
 </html>

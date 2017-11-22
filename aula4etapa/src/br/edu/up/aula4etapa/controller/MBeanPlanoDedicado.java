@@ -53,14 +53,14 @@ public class MBeanPlanoDedicado {
 			dedic.setIp("");
 		}
 		
-		//Verificando qual tipo de servidor foi selecionado
+		
 		if(win && linx) 
 		{
 			dedic.setServ("Windows - Linux");
 		}
 		if(!win && !linx)
 		{
-			//VERIFICAR COM PROFESSOR COMO RETORNAR O AVISO NA VIEW
+			
 			
 			this.msg = "Escolha no minimo uma Plataforma";
 		}
