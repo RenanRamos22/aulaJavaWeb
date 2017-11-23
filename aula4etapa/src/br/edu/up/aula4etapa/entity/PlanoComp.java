@@ -26,10 +26,10 @@ public class PlanoComp {
 	private Integer qtdSql;
 	private String email;
 	private String softc;
-	private String serv;
 	private BigDecimal valor;
-	private String imgUrl;
-	private String banco;
+	private String imgUrl;//caminho da imagem
+	private String bancoMsql;
+	private String bancoSql;
 	
 	@Column(length = 100000)
 	@Lob
@@ -65,6 +65,8 @@ public class PlanoComp {
 	public void setHd(String hd) {
 		this.hd = hd;
 	}
+	
+	
 	public Integer getQtdMsq() {
 		return qtdMsq;
 	}
@@ -77,7 +79,6 @@ public class PlanoComp {
 	public void setQtdSql(Integer qtdSql) {
 		this.qtdSql = qtdSql;
 	}
-	
 	public String getEmail() {
 		return email;
 	}
@@ -91,12 +92,7 @@ public class PlanoComp {
 		this.softc = softc;
 	}
 	
-	public String getServ() {
-		return serv;
-	}
-	public void setServ(String serv) {
-		this.serv = serv;
-	}
+	
 	public String getDesc() {
 		return desc;
 	}
@@ -116,12 +112,20 @@ public class PlanoComp {
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
-	public String getBanco() {
-		return banco;
+	public String getBancoMsql() {
+		return bancoMsql;
 	}
-	public void setBanco(String banco) {
-		this.banco = banco;
+	public void setBancoMsql(String bancoMsql) {
+		this.bancoMsql = bancoMsql;
 	}
+	public String getBancoSql() {
+		return bancoSql;
+	}
+	public void setBancoSql(String bancoSql) {
+		this.bancoSql = bancoSql;
+	}
+	
+	
 	
 	
 }

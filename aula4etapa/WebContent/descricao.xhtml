@@ -31,27 +31,26 @@
       <h:outputText value="#{mBeanComp.qtdMsq}"/> Base MySQL<br/>
       <h:outputText value="#{mBeanComp.qtdSql}"/> Base SQL
       </p>
+      <label>Digite seu Dominio:</label><br/>
       <input type="text" jsf:id="nome" jsf:value="#{mBeanCarrinho.dom}"
-					class="form-control" required="required" /><br/>
+					placeholder="dominio.com.br" class="form-control" required="required" /><br/>
       <h4>Servidores:</h4>
       
-      <div class="img-serv" align="center">
-      <label class="custom-control custom-radio"> 
-					<h:selectBooleanCheckbox value="#{mBeanCarrinho.win}" class="custom-control-input" required="true"/> 
-					<span class="custom-control-indicator"></span> 
-					<span class="custom-control-description">Windows</span>
-					
-				</label> 
-				<br/>
-				<img src="win.png"/>
-				</div>
+      
 				<div class="img-serv" align="center">
-				<label class="custom-control custom-radio"> 
-				<h:selectBooleanCheckbox value="#{mBeanCarrinho.linx}"  class="custom-control-input" required="true"/>
-					<span class="custom-control-indicator"></span> <span
-					class="custom-control-description">Linux</span>
-				</label><br/>
-				<img src="linux.png"/>
+				 
+				
+				<h:selectOneRadio value = "#{mBeanCarrinho.plat}"> 
+				   <f:selectItem  itemValue = "Linux" itemLabel = "Linux" />
+				   
+				   <f:selectItem itemValue = "Windows" itemLabel = "Windows" />
+
+				</h:selectOneRadio>  
+				
+				
+					
+				
+				
 				</div>
     </div>
     

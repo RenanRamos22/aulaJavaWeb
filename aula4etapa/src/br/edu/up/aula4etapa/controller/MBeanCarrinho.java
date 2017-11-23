@@ -1,12 +1,15 @@
 package br.edu.up.aula4etapa.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import br.edu.up.aula4etapa.dao.PedidoDao;
 import br.edu.up.aula4etapa.dao.PlanoCompartilhadoDao;
 import br.edu.up.aula4etapa.entity.ItemComp;
+import br.edu.up.aula4etapa.entity.Pedido;
 import br.edu.up.aula4etapa.entity.PlanoComp;
 
 
@@ -19,6 +22,18 @@ public class MBeanCarrinho {
 	private boolean linx;
 	private String msg;
 	private String Dom;
+	private String plat;
+	
+	public String salvarPedido() {
+		Pedido p = new Pedido();
+		p.setData(new Date());
+		p.setItens(itens);	
+		//p.setUsuario(u);
+		
+		new PedidoDao().inserir(p);
+		
+		return"";
+	}
 	
 	public String adicionar(Integer idPlanoCom) {
 		
@@ -31,24 +46,8 @@ public class MBeanCarrinho {
 		item.setQuantidade(1);
 		
 		item.setDominio(Dom);
-
-		if(win && linx) 
-		{
-			item.setPlataforma("Windows - Linux");
-		}
-		if(!win && !linx)
-		{
-			
-			this.msg = "Escolha no minimo uma Plataforma";
-		}
-		if(!win && linx)
-		{
-			item.setPlataforma("Linux");
-		}
-		if(win && !linx)
-		{
-			item.setPlataforma("Windows");
-		}
+		
+		item.setPlataforma(plat);
 
 		itens.add(item);
 		
@@ -93,6 +92,14 @@ public class MBeanCarrinho {
 
 	public void setDom(String dom) {
 		Dom = dom;
+	}
+
+	public String getPlat() {
+		return plat;
+	}
+
+	public void setPlat(String plat) {
+		this.plat = plat;
 	}
 	
 	

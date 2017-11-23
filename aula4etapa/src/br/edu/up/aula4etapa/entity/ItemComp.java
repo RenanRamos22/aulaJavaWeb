@@ -13,6 +13,8 @@ public class ItemComp {
 	private Integer id;
 	@ManyToOne
 	private PlanoComp planocomp;
+	@ManyToOne
+	private Pedido pedido;
 	private Integer quantidade;
 	private String plataforma;
 	private String period;

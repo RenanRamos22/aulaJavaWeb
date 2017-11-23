@@ -61,8 +61,23 @@ public class MBeanComp {
 		plano.setNome(nome);
 		plano.setQtdDom(qtdDom);
 		plano.setHd(hd);
-		plano.setQtdMsq(qtdMsq);
-		plano.setQtdSql(qtdSql);
+		
+		if(qtdMsq == null || qtdMsq== 0) {
+			plano.setQtdMsq(qtdMsq = null);
+			plano.setBancoMsql("não possui Banco de Dados MySQL");
+			}else {
+			plano.setQtdMsq(qtdMsq);
+			plano.setBancoMsql(" Banco de Dados MySQL");
+			}
+			
+		if(qtdSql == null || qtdSql== 0) {
+			plano.setQtdSql(qtdSql = null);
+			plano.setBancoSql("não possui Banco de Dados SQL");
+			}else {
+				plano.setQtdSql(qtdSql);
+				plano.setBancoSql(" Banco de Dados SQL");
+			}
+		
 		plano.setValor(valor);
 		plano.setDesc(desc);
 		plano.setImgUrl(caminhoImagem);
@@ -90,24 +105,6 @@ public class MBeanComp {
 			plano.setSoftc("");
 			plano.setEmail("Contas de E-mail");
 		}
-		//A mesma logica aplicada acima para os checkbox dos servidores
-		if(win && linx) 
-		{
-			plano.setServ("Windows - Linux");
-		}
-		if(!win && !linx)
-		{
-			//VERIFICAR COM PROFESSOR COMO RETORNAR O AVISO NA VIEW
-			System.out.print("Escolha no minimo uma Plataforma");
-		}
-		if(!win && linx)
-		{
-			plano.setServ("Linux");
-		}
-		if(win && !linx)
-		{
-			plano.setServ("Windows");
-		}
 		
 		
 		
@@ -130,7 +127,7 @@ public class MBeanComp {
 		this.qtdSql = null;
 		this.valor =null;
 		this.desc = "";
-		this.serv = "";
+		//this.serv = "";
 		compList = new PlanoCompartilhadoDao().listar();
 	}
 
@@ -144,7 +141,7 @@ public class MBeanComp {
 		this.qtdSql = plano.getQtdSql();
 		this.valor = plano.getValor();
 		this.desc = plano.getDesc();
-		this.serv = plano.getServ();
+		
 	}
 	
 	public void remover(PlanoComp plano) {
@@ -164,7 +161,7 @@ public class MBeanComp {
 		this.qtdSql = plano.getQtdSql();
 		this.valor = plano.getValor();
 		this.desc = plano.getDesc();
-		this.serv = plano.getServ();
+		
 		
 		return "descricao.jsf";
 	}
@@ -182,20 +179,29 @@ public class MBeanComp {
 	private boolean flagSoftc;
 	private boolean win;
 	private boolean linx;
-	private String serv;
+	//private String serv;
 	private BigDecimal valor;
 	private String desc;
 	private ApplicationPart imagem;
-	private String banco;
+	private String bancoMsql;
+	private String bancoSql;
 	
 	
 	
-	public String getBanco() {
-		return banco;
+	public String getBancoMsql() {
+		return bancoMsql;
+	}
+	
+	public String getBancoSql() {
+		return bancoSql;
 	}
 
-	public void setBanco(String banco) {
-		this.banco = banco;
+	public void setBancoSql(String bancoSql) {
+		this.bancoSql = bancoSql;
+	}
+
+	public void setBancoMsql(String bancoMsql) {
+		this.bancoMsql = bancoMsql;
 	}
 
 	public String getEmail() {
@@ -218,12 +224,12 @@ public class MBeanComp {
 	}
 	
 	
-	public String getServ() {
+	/*public String getServ() {
 		return serv;
 	}
 	public void setServ(String serv) {
 		this.serv = serv;
-	}
+	}*/
 	public Integer getId() {
 		return id;
 	}
@@ -243,19 +249,24 @@ public class MBeanComp {
 	public void setHd(String hd) {
 		this.hd = hd;
 	}
+
+	
 	public Integer getQtdMsq() {
 		return qtdMsq;
 	}
+
 	public void setQtdMsq(Integer qtdMsq) {
 		this.qtdMsq = qtdMsq;
 	}
+
 	public Integer getQtdSql() {
 		return qtdSql;
 	}
+
 	public void setQtdSql(Integer qtdSql) {
 		this.qtdSql = qtdSql;
 	}
-	
+
 	public String getDesc() {
 		return desc;
 	}
