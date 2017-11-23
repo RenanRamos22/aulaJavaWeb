@@ -18,6 +18,7 @@ public class MBeanCarrinho {
 	private boolean win;
 	private boolean linx;
 	private String msg;
+	private String Dom;
 	
 	public String adicionar(Integer idPlanoCom) {
 		
@@ -28,6 +29,8 @@ public class MBeanCarrinho {
 		item.setPlanocomp(plano);
 
 		item.setQuantidade(1);
+		
+		item.setDominio(Dom);
 
 		if(win && linx) 
 		{
@@ -82,6 +85,14 @@ public class MBeanCarrinho {
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+	public String getDom() {
+		return Dom;
+	}
+
+	public void setDom(String dom) {
+		Dom = dom;
 	}
 	
 	
