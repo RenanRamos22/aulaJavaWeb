@@ -94,9 +94,9 @@
 				
 				<br/>
 				<h:graphicImage class="img-fluid img-thumbnail" value="ServletImagem?id=#{mBeanComp.id}"
-width="20%" height="20%" ></h:graphicImage>
+width="20%" height="20%" style="margin-top:10px;"></h:graphicImage>
 </div>
-				
+			
 				<div class="form-group">
 					<label for="exampleFormControlTextarea1">Descrição:</label>
 					<textarea class="form-control" jsf:id="exampleFormControlTextarea1"
@@ -132,7 +132,7 @@ width="20%" height="20%" ></h:graphicImage>
 					<td>#{plano.qtdSql}#{plano.bancoSql}</td>
 					<td>#{plano.email} </td>
 					<td>#{plano.softc}</td>
-					<td>#{plano.valor}</td>
+					<td>R$:<h:outputText value="#{plano.valor}"><f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber></h:outputText></td>
 					<td ><textarea class="form-control" disabled="disabled" rows="3"  style="width:200px;">#{plano.desc}</textarea></td>
 					<td><h:outputText value="#{plano.data}"><f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"></f:convertDateTime></h:outputText> </td>
 					<td><input type="submit" jsf:id="btnAlterar"

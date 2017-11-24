@@ -13,9 +13,9 @@
 	<ui:define name="conteudo">
 	
 		<h1>Planos Servidores Dedicados</h1>
-		<form method="post" jsf:id="form">
+		<form method="post" jsf:id="form" enctype="multipart/form-data">
 		<h:messages></h:messages>
-		<h:outputText value="#{mBeanDedic.msg}"/>
+		
 		
 			<div class="form-group">
 				<label for="codigoPlano">Código: </label> <input type="text"
@@ -23,11 +23,11 @@
 
 				<label for="criacao">Data de Criação</label> 
 				<input type="date" class="form-control" jsf:id="data" id="criacao" jsf:value="#{mBeanDedic.data}">
-					<f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"></f:convertDateTime>
+					<f:convertDateTime pattern="yyyy-MM-dd" timeZone="GMT-3"></f:convertDateTime>
 				</input> <br />
 				 
 				 <label	for="nomePlano">Nome do Plano: </label>
-				 <input type="text" jsf:id="nome" jsf:value="#{mBeanDedic.nome}" class="form-control" /> <br /> 
+				 <input type="text" jsf:id="nome" jsf:value="#{mBeanDedic.nome}" class="form-control" required="required"/> <br /> 
 				  
 				  <label for="cpf">Quantidade de dominios: </label> 
 				  <input type="text" class="form-control" jsf:id="qtdDom" jsf:value="#{mBeanDedic.qtdDom}" />
@@ -62,25 +62,25 @@
 					</label>
 				</div>
 				
-				<br /> <label>Servidor: </label> 
-				<label class="custom-control custom-radio"> 
-				<h:selectBooleanCheckbox value="#{mBeanDedic.win}" class="custom-control-input" /> 
-					<span class="custom-control-indicator"></span> 
-					<span class="custom-control-description">Windows</span>
-				</label> 
 				
-				<label class="custom-control custom-radio"> 
-				<h:selectBooleanCheckbox value="#{mBeanDedic.linx}" class="custom-control-input" />
-					<span class="custom-control-indicator"></span> 
-					<span class="custom-control-description">Linux</span>
-				</label>
 				<br/>
-				
-				<label for="Valor">Valor: </label> <input type="text"
+				<label for="Valor"  >Valor: </label> <input type="text"
 					jsf:id="valor" id="valor" jsf:value="#{mBeanDedic.valor}"
 					class="form-control" required="required"> <f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber>
 				</input>
 				<br />
+				<div class="form-group row">
+				<label class="col-sm-1 col-form-label">Imagem: </label>
+				<div class="col-sm-10">
+					<input type="file" 
+					jsf:id="imagem" jsf:value="#{mBeanDedic.img}"
+					class="form-control" />
+				</div>
+				
+				<br/>
+				<h:graphicImage class="img-fluid img-thumbnail" value="ServletImagemDedicado?id=#{mBeanDedic.id}"
+width="20%" height="20%" style="margin-top:10px;"></h:graphicImage>
+</div>
 
 				<div class="form-group">
 					<label for="exampleFormControlTextarea1">Descrição:</label>
@@ -122,7 +122,6 @@
 				<th>HD</th>
 				<th>RAM</th>
 				<th>IP Dedicado</th>
-				<th>Servidor</th>
 				<th>Valor</th>
 				<th>Descrição</th>
 				<th>Data de Criação</th>
@@ -139,10 +138,9 @@
 					<td>#{plano.hd}</td>
 					<td>#{plano.ram}</td>
 					<td>#{plano.ip}</td>
-					<td>#{plano.serv}</td>
-					<td>#{plano.valor}</td>
+					<td>R$:<h:outputText value="#{plano.valor}"><f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber></h:outputText></td>
 					<td ><textarea class="form-control" disabled="disabled" rows="3"  style="width:200px;">#{plano.descr}</textarea></td>
-					<td>#{plano.data}</td>
+					<td><h:outputText value="#{plano.data}"><f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"></f:convertDateTime></h:outputText> </td>
 					<td><input type="submit" jsf:id="btnAlterar"
 					jsf:action="#{mBeanDedic.alterar(plano)}" value="Alterar"
 					class="btn btn-primary" /></td>

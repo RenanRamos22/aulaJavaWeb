@@ -1,11 +1,15 @@
 package br.edu.up.aula4etapa.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+
+import org.apache.catalina.core.ApplicationPart;
 
 import br.edu.up.aula4etapa.dao.DedicadoDao;
 import br.edu.up.aula4etapa.entity.Dedicado;
@@ -22,6 +26,29 @@ public class MBeanPlanoDedicado {
 	
 	public void salvar(){
 		
+		String caminhoImagem ="";
+		
+		if(img != null && img.getSubmittedFileName() != null) {
+			
+			caminhoImagem = "C:\\Users\\Renan\\Documents\\Imagens_ProjetoJava\\" +img.getSubmittedFileName();
+			
+			try {
+				
+				byte[] bytesImg = new byte[(int) img.getSize()];
+				img.getInputStream().read(bytesImg);
+				File f = new File(caminhoImagem);
+				FileOutputStream fos = new FileOutputStream(f);
+				fos.write(bytesImg);
+				
+				fos.close();
+				
+				
+				
+			}catch (Exception e) {
+				
+			}
+		}
+		
 		Dedicado dedic = new Dedicado();
 		dedic.setId(this.id);
 		dedic.setData(data);
@@ -29,8 +56,7 @@ public class MBeanPlanoDedicado {
 		dedic.setHd(hd);
 		dedic.setRam(ram);
 		dedic.setValor(valor);
-		
-		
+		dedic.setImgUrl(caminhoImagem);
 		dedic.setDescr(descr);
 		
 		// Se o checkbox dominio ilimitado estiver marcado
@@ -38,23 +64,23 @@ public class MBeanPlanoDedicado {
 		// Se n�o estiver ent�o � atribuido a lista a quantidade digitada
 		if(domIlim) {
 		
-		dedic.setIlim("Ilimitado");
+		dedic.setIlim("- Dominios Ilimitado");
 				
 		
 		
 		}else {
 			
-			dedic.setQtdDom(qtdDom);
+			dedic.setQtdDom("- Até "+qtdDom+" Site(Dominío)");
 		}
 		
 		if(ipDedic) {
-			dedic.setIp("IP Dedicado");
+			dedic.setIp("- IP Dedicado");
 		}else {
 			dedic.setIp("");
 		}
 		
 		
-		if(win && linx) 
+		/*if(win && linx) 
 		{
 			dedic.setServ("Windows - Linux");
 		}
@@ -71,7 +97,7 @@ public class MBeanPlanoDedicado {
 		if(win && !linx)
 		{
 			dedic.setServ("Windows");
-		} 
+		} */
 		
 		if(this.id == null) {
 			new DedicadoDao().salvar(dedic);
@@ -80,19 +106,29 @@ public class MBeanPlanoDedicado {
 		}
 		
 		dedicList = new DedicadoDao().listar();
+		limpar();
+	}
+	public void limpar() {
+		this.id = null;
+		this.nome = "";
+		this.data = null;
+		this.qtdDom = null;
+		this.hd = "";
+		this.ram = "";
+		this.ip = "";
+		this.valor = null;
+		this.descr = "";
 		
 	}
-	
 	public void alterar(Dedicado dedic) {
 		
 		this.id = dedic.getId();
 		this.nome = dedic.getNome();
 		this.data = dedic.getData();
-		this.qtdDom = dedic.getQtdDom();
+		
 		this.hd = dedic.getHd();
 		this.ram = dedic.getRam();
 		this.ip = dedic.getIp();
-		this.serv = dedic.getServ();
 		this.valor = dedic.getValor();
 		this.descr = dedic.getDescr();
 		
@@ -104,11 +140,11 @@ public class MBeanPlanoDedicado {
 		dedicList = new DedicadoDao().listar();
 		
 	}
-	private String msg;
+	
 	private Integer id;
 	private Date data;
 	private String nome;
-	private Integer qtdDom;
+	private String qtdDom;
 	private Boolean domIlim;
 	private String ilim;
 	private String hd;
@@ -120,6 +156,7 @@ public class MBeanPlanoDedicado {
 	private String serv;
 	private String descr;
 	private BigDecimal valor;
+	private ApplicationPart img;
 	
 	public Integer getId() {
 		return id;
@@ -146,10 +183,10 @@ public class MBeanPlanoDedicado {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Integer getQtdDom() {
+	public String getQtdDom() {
 		return qtdDom;
 	}
-	public void setQtdDom(Integer qtdDom) {
+	public void setQtdDom(String qtdDom) {
 		this.qtdDom = qtdDom;
 	}
 	public Boolean getDomIlim() {
@@ -222,12 +259,14 @@ public class MBeanPlanoDedicado {
 		this.valor = valor;
 	}
 
-	public String getMsg() {
-		return msg;
+
+
+	public ApplicationPart getImg() {
+		return img;
 	}
 
-	public void setMsg(String msg) {
-		this.msg = msg;
+	public void setImg(ApplicationPart img) {
+		this.img = img;
 	}
 	
 }

@@ -61,10 +61,13 @@ public class MBeanComp {
 		plano.setNome(nome);
 		plano.setQtdDom(qtdDom);
 		plano.setHd(hd);
+		plano.setValor(valor);
+		plano.setDesc(desc);
+		plano.setImgUrl(caminhoImagem);
 		
 		if(qtdMsq == null || qtdMsq== 0) {
 			plano.setQtdMsq(qtdMsq = null);
-			plano.setBancoMsql("não possui Banco de Dados MySQL");
+			plano.setBancoMsql("Não possui Banco de Dados MySQL");
 			}else {
 			plano.setQtdMsq(qtdMsq);
 			plano.setBancoMsql(" Banco de Dados MySQL");
@@ -72,16 +75,12 @@ public class MBeanComp {
 			
 		if(qtdSql == null || qtdSql== 0) {
 			plano.setQtdSql(qtdSql = null);
-			plano.setBancoSql("não possui Banco de Dados SQL");
+			plano.setBancoSql("Não possui Banco de Dados SQL");
 			}else {
 				plano.setQtdSql(qtdSql);
 				plano.setBancoSql(" Banco de Dados SQL");
 			}
-		
-		plano.setValor(valor);
-		plano.setDesc(desc);
-		plano.setImgUrl(caminhoImagem);
-		
+
 		
 	
 		//Logica para sinalizar se o plano ter� os servi�os de contas de e-mail ou softaculous

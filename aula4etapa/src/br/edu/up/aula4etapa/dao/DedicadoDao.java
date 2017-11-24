@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.edu.up.aula4etapa.entity.Dedicado;
+import br.edu.up.aula4etapa.entity.PlanoComp;
 
 public class DedicadoDao {
 
@@ -18,7 +19,10 @@ public class DedicadoDao {
 	}
 	
 	public Dedicado buscar(Integer id) {
-		return null;
+		EntityManager em = Conexao.getInstance().createEntityManager();
+		
+		Dedicado dedic = em.find(Dedicado.class, id);
+		return dedic;
 	}
 
 	public ArrayList<Dedicado> listar() {

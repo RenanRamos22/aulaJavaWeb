@@ -14,10 +14,14 @@ public class ItemComp {
 	@ManyToOne
 	private PlanoComp planocomp;
 	@ManyToOne
+	private Dedicado dedic;
+	@ManyToOne
+	private Revenda revenda;
+	@ManyToOne
 	private Pedido pedido;
 	private Integer quantidade;
 	private String plataforma;
-	private String period;
+	
 	private String dominio;
 	
 	
@@ -34,12 +38,7 @@ public class ItemComp {
 	public void setDominio(String dominio) {
 		this.dominio = dominio;
 	}
-	public String getPeriod() {
-		return period;
-	}
-	public void setPeriod(String period) {
-		this.period = period;
-	}
+	
 	public Integer getQuantidade() {
 		return quantidade;
 	}
@@ -63,6 +62,18 @@ public class ItemComp {
 	}
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
+	}
+	public Dedicado getDedic() {
+		return dedic;
+	}
+	public void setDedic(Dedicado dedic) {
+		this.dedic = dedic;
+	}
+	public Revenda getRevenda() {
+		return revenda;
+	}
+	public void setRevenda(Revenda revenda) {
+		this.revenda = revenda;
 	}
 	
 	
