@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import br.edu.up.aula4etapa.entity.ItemComp;
 import br.edu.up.aula4etapa.entity.Pedido;
+import br.edu.up.aula4etapa.entity.PlanoComp;
 
 public class PedidoDao {
 
@@ -31,6 +33,12 @@ public class PedidoDao {
 		return new ArrayList<Pedido>(q.getResultList());
 	}
 	
+	public ArrayList<ItemComp> listarItem() {
+		EntityManager em = Conexao.getInstance().createEntityManager();
+		Query q = em.createQuery("from ItemComp");
+		
+		return new ArrayList<ItemComp>(q.getResultList());
+	}
 	public void alterar(Pedido pedido) {	
 		EntityManager em = Conexao.getInstance().createEntityManager();
 		em.getTransaction().begin();
@@ -45,4 +53,6 @@ public class PedidoDao {
 		em.remove(pedido);
 		em.getTransaction().commit();
 }
+	
+	
 }

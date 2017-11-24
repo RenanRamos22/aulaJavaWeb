@@ -23,7 +23,7 @@
 				<label for="criacao">Data de Criação</label> 
 				<input type="date" placeholder="dd/mm/aaaa" class="form-control" id="criacao"
 				 jsf:value="#{mBeanComp.data}">
-				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"></f:convertDateTime>
+				<f:convertDateTime pattern="yyyy-MM-dd" timeZone="GMT-3"></f:convertDateTime>
 				</input><br /> 
 				
 				<label for="nomePlano">Nome do Plano: </label>
@@ -130,11 +130,11 @@ width="20%" height="20%" ></h:graphicImage>
 					<td>#{plano.hd}</td>
 					<td>#{plano.qtdMsq}#{plano.bancoMsql}</td>
 					<td>#{plano.qtdSql}#{plano.bancoSql}</td>
-					<td>#{plano.email}</td>
+					<td>#{plano.email} </td>
 					<td>#{plano.softc}</td>
 					<td>#{plano.valor}</td>
 					<td ><textarea class="form-control" disabled="disabled" rows="3"  style="width:200px;">#{plano.desc}</textarea></td>
-					<td>#{plano.data}</td>
+					<td><h:outputText value="#{plano.data}"><f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"></f:convertDateTime></h:outputText> </td>
 					<td><input type="submit" jsf:id="btnAlterar"
 					jsf:action="#{mBeanComp.alterar(plano)}" value="Alterar"
 					class="btn btn-primary" /></td>

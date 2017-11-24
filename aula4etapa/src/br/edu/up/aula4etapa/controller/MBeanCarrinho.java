@@ -17,7 +17,8 @@ import br.edu.up.aula4etapa.entity.PlanoComp;
 @SessionScoped
 public class MBeanCarrinho {
 
-	private ArrayList<ItemComp> itens = new ArrayList<ItemComp>();
+	 private ArrayList<ItemComp> itens = new ArrayList<ItemComp>();
+	
 	private boolean win;
 	private boolean linx;
 	private String msg;
@@ -25,10 +26,17 @@ public class MBeanCarrinho {
 	private String plat;
 	
 	public String salvarPedido() {
+		
 		Pedido p = new Pedido();
 		p.setData(new Date());
 		p.setItens(itens);	
 		//p.setUsuario(u);
+		
+		for (ItemComp i : itens) {
+
+			i.setPedido(p);
+
+		}
 		
 		new PedidoDao().inserir(p);
 		
@@ -51,6 +59,11 @@ public class MBeanCarrinho {
 
 		itens.add(item);
 		
+		return "carrinho.jsf";
+	}
+	
+	public String removerItem(ItemComp item) {
+		itens.remove(item);
 		return "carrinho.jsf";
 	}
 	

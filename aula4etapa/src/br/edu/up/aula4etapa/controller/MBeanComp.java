@@ -161,6 +161,8 @@ public class MBeanComp {
 		this.qtdSql = plano.getQtdSql();
 		this.valor = plano.getValor();
 		this.desc = plano.getDesc();
+		this.bancoMsql = plano.getBancoMsql();
+		this.bancoSql = plano.getBancoSql();
 		
 		
 		return "descricao.jsf";

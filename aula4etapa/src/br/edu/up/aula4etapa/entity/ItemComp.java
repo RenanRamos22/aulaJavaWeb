@@ -58,6 +58,12 @@ public class ItemComp {
 	public void setPlataforma(String plataforma) {
 		this.plataforma = plataforma;
 	}
+	public Pedido getPedido() {
+		return pedido;
+	}
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
 	
 	
 	
