@@ -14,22 +14,24 @@
 <ui:define name="cont-listarprod">
 <form jsf:id="form">
 
-<input type="hidden" jsf:id="id" jsf:value="#{mBeanComp.id}"/>
- <h1 class="h1_smart"><h:outputText value="#{mBeanComp.nome}"></h:outputText></h1>
+<input type="hidden" jsf:id="id" jsf:value="#{mBeanDedic.id}"/>
+ <h1 class="h1_smart_dedic"><h:outputText value="#{mBeanDedic.nome}"></h:outputText></h1>
  <div class="conteudo">
     <div class="descr" >  
      <h3>Recursos:</h3><br/>
-      <h5>Hospedagem em servidor Compartilhado</h5>
+      <h5>Hospedagem em servidor Dedicado</h5>
       <p>
-        Direito a Hospedar até <h:outputText value="#{mBeanComp.qtdDom}"/> Site(Domínio).
+        Direito a Hospedar até <h:outputText value="#{mBeanDedic.qtdDom}"/> Site(Domínio).
       </p>
       <p>
-        <h:outputText value="#{mBeanComp.hd}"/> de espaço em disco (Armazenamento de Arquivos e E-mails)
+        <h:outputText value="#{mBeanDedic.hd}"/> de espaço em disco (Armazenamento de Arquivos e E-mails)
+      </p>
+      <p>
+        <h:outputText value="#{mBeanDedic.ram}"/> Memoria RAM
       </p>
       <h5>Base de Dados:</h5>
-      <p>
-      <h:outputText value="#{mBeanComp.qtdMsq}" /> <h:outputText value="#{mBeanComp.bancoMsql}" /> <br/>
-      <h:outputText value="#{mBeanComp.qtdSql}" /> <h:outputText value="#{mBeanComp.bancoSql}" />
+      <p style="color:#aa0000">
+      <strong><h:outputText value="#{mBeanDedic.ip}" /></strong><br/>
       </p>
       <label>Digite seu Dominio:</label><br/>
       <input type="text" jsf:id="nome" jsf:value="#{mBeanCarrinho.dom}"
@@ -54,13 +56,13 @@
 				</div>
     </div>
     
-    <div  id="divContainer" align="center">
-      <div class="img_prod_desc">
-     <h:graphicImage   value="ServletImagem?id=#{mBeanComp.id}"/>
+    <div  id="divContainer_dedic" align="center">
+      <div class="img_prod_desc_dedic">
+     <h:graphicImage   value="ServletImagemDedicado?id=#{mBeanDedic.id}"/>
       </div>
       <h3>Descrição</h3>
-      <p class="text-justify"><h:outputText value="#{mBeanComp.desc}"/></p>
-      <input type="submit" class="btn btn-primary btn-lg btn-block" value="Adicionar ao Carrinho" jsf:action="#{mBeanCarrinho.adicionar(mBeanComp.id)}"/>
+      <p class="text-justify"><h:outputText value="#{mBeanDedic.descr}"/></p>
+      <input type="submit" class="btn btn-primary btn-lg btn-block" value="Adicionar ao Carrinho" jsf:action="#{mBeanCarrinho.adicionar(mBeanDedic.id)}"/>
       <a href="listaProdutos.jsf" class="btn btn-secondary btn-lg btn-block">Voltar para Lista</a>    
     </div>
 </div> 

@@ -26,7 +26,7 @@ public class MBeanPlanoDedicado {
 	
 	public void salvar(){
 		
-		String caminhoImagem ="";
+		
 		
 		if(img != null && img.getSubmittedFileName() != null) {
 			
@@ -70,11 +70,11 @@ public class MBeanPlanoDedicado {
 		
 		}else {
 			
-			dedic.setQtdDom("- Até "+qtdDom+" Site(Dominío)");
+			dedic.setQtdDom("- At� "+qtdDom+" Dominio(s)");
 		}
 		
 		if(ipDedic) {
-			dedic.setIp("- IP Dedicado");
+			dedic.setIp("IP Dedicado");
 		}else {
 			dedic.setIp("");
 		}
@@ -125,15 +125,27 @@ public class MBeanPlanoDedicado {
 		this.id = dedic.getId();
 		this.nome = dedic.getNome();
 		this.data = dedic.getData();
-		
 		this.hd = dedic.getHd();
 		this.ram = dedic.getRam();
 		this.ip = dedic.getIp();
 		this.valor = dedic.getValor();
 		this.descr = dedic.getDescr();
 		
+		
 	}
 	
+	public String carregaDedicado(Dedicado dedic) {
+		this.id = dedic.getId();
+		this.nome = dedic.getNome();
+		this.data = dedic.getData();
+		this.hd = dedic.getHd();
+		this.ram = dedic.getRam();
+		this.ip = dedic.getIp();
+		this.valor = dedic.getValor();
+		this.descr = dedic.getDescr();
+		
+		return"descricaoDedicado.jsf";
+	}
 	public void remover(Dedicado dedic) {
 		
 		new DedicadoDao().remover(dedic.getId());
@@ -157,6 +169,7 @@ public class MBeanPlanoDedicado {
 	private String descr;
 	private BigDecimal valor;
 	private ApplicationPart img;
+	private String caminhoImagem;
 	
 	public Integer getId() {
 		return id;
@@ -259,7 +272,15 @@ public class MBeanPlanoDedicado {
 		this.valor = valor;
 	}
 
+ 
 
+	public String getCaminhoImagem() {
+		return caminhoImagem;
+	}
+
+	public void setCaminhoImagem(String caminhoImagem) {
+		this.caminhoImagem = caminhoImagem;
+	}
 
 	public ApplicationPart getImg() {
 		return img;

@@ -34,8 +34,8 @@
   <ui:repeat var="item" value="#{mBeanCarrinho.itens}">
   
     <tr>
-      <th scope="row">#{item.planocomp.id}</th>
-      <td><h:graphicImage style="width:100px;"  value="ServletImagem?id=#{item.planocomp.id}"/></td>
+      <th scope="row">#{item.planocomp.id}#{item.dedic.id}</th>
+      <td><h:graphicImage styleClass="imgCarrinho"   value="ServletImagemDedicado?id=#{item.dedic.id}"/><h:graphicImage  styleClass="imgCarrinho"   value="ServletImagem?id=#{item.planocomp.id}" /></td>
       <td>#{item.planocomp.nome}</td>
       <td>#{item.dominio}</td>
       <td>R$<h:outputText value="#{item.planocomp.valor}"> <f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber></h:outputText></td>

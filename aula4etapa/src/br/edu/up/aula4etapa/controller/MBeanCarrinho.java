@@ -6,8 +6,10 @@ import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import br.edu.up.aula4etapa.dao.DedicadoDao;
 import br.edu.up.aula4etapa.dao.PedidoDao;
 import br.edu.up.aula4etapa.dao.PlanoCompartilhadoDao;
+import br.edu.up.aula4etapa.entity.Dedicado;
 import br.edu.up.aula4etapa.entity.ItemComp;
 import br.edu.up.aula4etapa.entity.Pedido;
 import br.edu.up.aula4etapa.entity.PlanoComp;
@@ -18,6 +20,7 @@ import br.edu.up.aula4etapa.entity.PlanoComp;
 public class MBeanCarrinho {
 
 	 private ArrayList<ItemComp> itens = new ArrayList<ItemComp>();
+	 private ArrayList<Dedicado> intensDedic = new ArrayList<Dedicado>(); 
 	
 	private boolean win;
 	private boolean linx;
@@ -43,12 +46,16 @@ public class MBeanCarrinho {
 		return"";
 	}
 	
-	public String adicionar(Integer idPlanoCom) {
+	public String adicionar(Integer id) {
 		
-		PlanoComp plano = new PlanoCompartilhadoDao().buscar(idPlanoCom);
-
+		PlanoComp plano = new PlanoCompartilhadoDao().buscar(id);
+		
+		Dedicado dedic = new DedicadoDao().buscar(id);
+		
 		ItemComp item = new ItemComp();
-
+		
+		item.setDedic(dedic);
+		
 		item.setPlanocomp(plano);
 
 		item.setQuantidade(1);
