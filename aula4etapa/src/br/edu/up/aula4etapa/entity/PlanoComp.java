@@ -92,7 +92,6 @@ public class PlanoComp {
 		this.softc = softc;
 	}
 	
-	
 	public String getDesc() {
 		return desc;
 	}

@@ -62,16 +62,25 @@ public class MBeanPlanoDedicado {
 		// Se o checkbox dominio ilimitado estiver marcado
 		// Ent�o � adicionado a string na lista
 		// Se n�o estiver ent�o � atribuido a lista a quantidade digitada
+		
+		if(qtdDom.equals("0")) {
+			dedic.setQtdDom("- Não possui Site");
+		}
 		if(domIlim) {
 		
-		dedic.setIlim("- Dominios Ilimitado");
-				
-		
-		
-		}else {
 			
-			dedic.setQtdDom("- At� "+qtdDom+" Dominio(s)");
+			dedic.setIlim("- Dominios Ilimitado");
+		
+		
 		}
+		
+		else{
+			
+			dedic.setQtdDom("- Até "+qtdDom+" Site(s)");
+			
+		}
+		
+		
 		
 		if(ipDedic) {
 			dedic.setIp("IP Dedicado");

@@ -55,16 +55,22 @@ public class MBeanComp {
 		
 		PlanoComp plano = new PlanoComp();
 		plano.setId(this.id);
-		
-		
 		plano.setData(data);
 		plano.setNome(nome);
-		plano.setQtdDom(qtdDom);
 		plano.setHd(hd);
 		plano.setValor(valor);
 		plano.setDesc(desc);
 		plano.setImgUrl(caminhoImagem);
 		
+		if(qtdDom.equals("0")) {
+			plano.setQtdDom("- Não possui Site");
+		}
+		
+		else {
+			
+			plano.setQtdDom("- Ate "+qtdDom+" Site(s)");
+		}
+
 		if(qtdMsq == null || qtdMsq== 0) {
 			plano.setQtdMsq(qtdMsq = null);
 			plano.setBancoMsql("Não possui Banco de Dados MySQL");
@@ -178,16 +184,14 @@ public class MBeanComp {
 	private boolean flagEmail;
 	private String softc;
 	private boolean flagSoftc;
-	private boolean win;
-	private boolean linx;
+	//private boolean win;
+	//private boolean linx;
 	//private String serv;
 	private BigDecimal valor;
 	private String desc;
 	private ApplicationPart imagem;
 	private String bancoMsql;
 	private String bancoSql;
-	
-	
 	
 	public String getBancoMsql() {
 		return bancoMsql;
@@ -304,7 +308,7 @@ public class MBeanComp {
 	public void setSoftc(String softc) {
 		this.softc = softc;
 	}
-	public boolean isWin() {
+	/*public boolean isWin() {
 		return win;
 	}
 	public void setWin(boolean win) {
@@ -315,7 +319,7 @@ public class MBeanComp {
 	}
 	public void setLinx(boolean linx) {
 		this.linx = linx;
-	}
+	}*/
 
 	public ApplicationPart getImagem() {
 		return imagem;

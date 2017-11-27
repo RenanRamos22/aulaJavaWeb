@@ -13,6 +13,7 @@ import org.apache.catalina.core.ApplicationPart;
 
 import br.edu.up.aula4etapa.dao.PlanoCompartilhadoDao;
 import br.edu.up.aula4etapa.dao.RevendaDao;
+import br.edu.up.aula4etapa.entity.Dedicado;
 import br.edu.up.aula4etapa.entity.PlanoComp;
 import br.edu.up.aula4etapa.entity.Revenda;
 
@@ -49,19 +50,41 @@ String caminhoImagem = "";
 				// TODO: handle exception
 			}
 		}
-	
+
 	Revenda plano = new Revenda();
 	plano.setId(this.id);
 	plano.setData(data);
 	plano.setNome(nome);
-	plano.setQtdDom(qtdDom);
 	plano.setHd(hd);
-	plano.setQtdMsq(qtdMsq);
-	plano.setQtdSql(qtdSql);
 	plano.setValor(valor);
 	plano.setDesc(desc);
 	plano.setImgUrl(caminhoImagem);
+
+	if(qtdDom.equals("0")) {
+		plano.setQtdDom("- Não possui Site");
+	}
 	
+	else {
+		
+		plano.setQtdDom("- Ate "+qtdDom+" Site(s)");
+	}
+	
+	if(qtdMsq == null || qtdMsq== 0) {
+		plano.setQtdMsq(qtdMsq = null);
+		plano.setBancoMsql("Não possui Banco de Dados MySQL");
+		}else {
+		plano.setQtdMsq(qtdMsq);
+		plano.setBancoMsql(" Banco de Dados MySQL");
+		}
+		
+	if(qtdSql == null || qtdSql== 0) {
+		plano.setQtdSql(qtdSql = null);
+		plano.setBancoSql("Não possui Banco de Dados SQL");
+		}else {
+			plano.setQtdSql(qtdSql);
+			plano.setBancoSql(" Banco de Dados SQL");
+		}
+
 	//Logica para sinalizar se o plano ter� os servi�os de contas de e-mail ou softaculous
 			if(flagEmail == false  && flagSoftc == false) 
 			{
@@ -84,24 +107,7 @@ String caminhoImagem = "";
 				plano.setEmail("Contas de E-mail");
 			}
 			
-			//A mesma logica aplicada acima para os checkbox dos servidores
-			if(win && linx) 
-			{
-				plano.setServ("Windows - Linux");
-			}
-			if(!win && !linx)
-			{
-				//VERIFICAR COM PROFESSOR COMO RETORNAR O AVISO NA VIEW
-				System.out.print("Escolha no minimo uma Plataforma");
-			}
-			if(!win && linx)
-			{
-				plano.setServ("Linux");
-			}
-			if(win && !linx)
-			{
-				plano.setServ("Windows");
-			}
+			
 			
 			if(this.id == null) {
 				new RevendaDao().salvar(plano);
@@ -122,7 +128,7 @@ String caminhoImagem = "";
 		this.qtdSql = null;
 		this.valor =null;
 		this.desc = "";
-		this.serv = "";
+		revList = new RevendaDao().listar();
 		
 	}
 	
@@ -136,7 +142,7 @@ String caminhoImagem = "";
 		this.qtdSql = plano.getQtdSql();
 		this.valor = plano.getValor();
 		this.desc = plano.getDesc();
-		this.serv = plano.getServ();
+		
 	}
 	
 	public void remover(Revenda plano) {
@@ -144,6 +150,23 @@ String caminhoImagem = "";
 		new RevendaDao().remover(plano.getId());
 		revList = new RevendaDao().listar();
 		
+	}
+	
+	public String carregarPlano(Revenda plano) {
+		this.id = plano.getId();
+		this.data = plano.getData();
+		this.nome = plano.getNome();
+		this.qtdDom = plano.getQtdDom();
+		this.hd = plano.getHd();
+		this.qtdMsq = plano.getQtdMsq();
+		this.qtdSql = plano.getQtdSql();
+		this.valor = plano.getValor();
+		this.desc = plano.getDesc();
+		this.bancoMsql = plano.getBancoMsql();
+		this.bancoSql = plano.getBancoSql();
+		
+		
+		return "descricao.jsf";
 	}
 	private Integer id;
 	private Date data;
@@ -156,13 +179,14 @@ String caminhoImagem = "";
 	private boolean flagEmail;
 	private String softc;
 	private boolean flagSoftc;
-	private boolean win;
+	/*private boolean win;
 	private boolean linx;
-	private String serv;
+	private String serv;*/
 	private BigDecimal valor;
 	private String desc;
 	private ApplicationPart imagem;
-	
+	private String bancoMsql;
+	private String bancoSql;
 	
 	public ArrayList<Revenda> getRevList() {
 		return revList;
@@ -173,6 +197,23 @@ String caminhoImagem = "";
 	public Integer getId() {
 		return id;
 	}
+	
+	public String getBancoMsql() {
+		return bancoMsql;
+	}
+
+	public void setBancoMsql(String bancoMsql) {
+		this.bancoMsql = bancoMsql;
+	}
+
+	public String getBancoSql() {
+		return bancoSql;
+	}
+
+	public void setBancoSql(String bancoSql) {
+		this.bancoSql = bancoSql;
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -236,7 +277,7 @@ String caminhoImagem = "";
 	public void setFlagSoftc(boolean flagSoftc) {
 		this.flagSoftc = flagSoftc;
 	}
-	public boolean isWin() {
+	/*public boolean isWin() {
 		return win;
 	}
 	public void setWin(boolean win) {
@@ -253,7 +294,7 @@ String caminhoImagem = "";
 	}
 	public void setServ(String serv) {
 		this.serv = serv;
-	}
+	}*/
 	public BigDecimal getValor() {
 		return valor;
 	}

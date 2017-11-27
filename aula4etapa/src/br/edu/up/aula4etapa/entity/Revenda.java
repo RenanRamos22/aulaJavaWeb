@@ -30,13 +30,27 @@ public class Revenda {
 	@Lob
 	private String desc;
 	private String imgUrl;
-	
+	private String bancoMsql;
+	private String bancoSql;
 	
 	public String getImgUrl() {
 		return imgUrl;
 	}
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+	
+	public String getBancoMsql() {
+		return bancoMsql;
+	}
+	public void setBancoMsql(String bancoMsql) {
+		this.bancoMsql = bancoMsql;
+	}
+	public String getBancoSql() {
+		return bancoSql;
+	}
+	public void setBancoSql(String bancoSql) {
+		this.bancoSql = bancoSql;
 	}
 	public Integer getId() {
 		return id;
