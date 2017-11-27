@@ -1,0 +1,70 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	
+	
+<ui:composition template="template2.xhtml">
+
+<ui:define name="title"> Descrição do Plano </ui:define>
+
+<ui:define name="cont-listarprod">
+<form jsf:id="form">
+
+<input type="hidden" jsf:id="id" jsf:value="#{mBeanRevenda.id}"/>
+ <h1 class="h1_smart"><h:outputText value="#{mBeanRevenda.nome}"></h:outputText></h1>
+ <div class="conteudo">
+    <div class="descr" >  
+     <h3>Recursos:</h3><br/>
+      <h5>Hospedagem em servidor Compartilhado</h5>
+      <p>
+        Direito a Hospedar <h:outputText value="#{mBeanRevenda.qtdDom}"/>(Domínio).
+      </p>
+      <p>
+        <h:outputText value="#{mBeanRevenda.hd}"/> de espaço em disco (Armazenamento de Arquivos e E-mails)
+      </p>
+      <h5>Base de Dados:</h5>
+      <p>
+      <h:outputText value="#{mBeanRevenda.qtdMsq}" /> <h:outputText value="#{mBeanRevenda.bancoMsql}" /> <br/>
+      <h:outputText value="#{mBeanRevenda.qtdSql}" /> <h:outputText value="#{mBeanRevenda.bancoSql}" />
+      </p>
+      <label>Digite seu Dominio:</label><br/>
+      <input type="text" jsf:id="nome" jsf:value="#{mBeanCarrinho.dom}"
+					placeholder="dominio.com.br" class="form-control" required="required" /><br/>
+      <h4>Servidores:</h4>
+      
+      
+				<div class="img-serv" align="center">
+				 
+				
+				<h:selectOneRadio value = "#{mBeanCarrinho.plat}"> 
+				   <f:selectItem  itemValue = "Linux" itemLabel = "Linux" />
+				   
+				   <f:selectItem itemValue = "Windows" itemLabel = "Windows" />
+
+				</h:selectOneRadio>  
+				
+				
+					
+				
+				
+				</div>
+    </div>
+    
+    <div  id="divContainer" align="center">
+      <div class="img_prod_desc">
+     <h:graphicImage   value="ServletImagemRevenda?id=#{mBeanRevenda.id}"/>
+      </div>
+      <h3>Descrição</h3>
+      <p class="text-justify"><h:outputText value="#{mBeanRevenda.desc}"/></p>
+      <input type="submit" class="btn btn-primary btn-lg btn-block" value="Adicionar ao Carrinho" jsf:action="#{mBeanCarrinho.adicionar(mBeanRevenda.id)}"/>
+      <a href="listaProdutos.jsf" class="btn btn-secondary btn-lg btn-block">Voltar para Lista</a>    
+    </div>
+</div> 
+</form>
+</ui:define>
+</ui:composition>
+</html>

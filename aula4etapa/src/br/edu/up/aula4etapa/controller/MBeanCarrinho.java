@@ -9,10 +9,12 @@ import javax.faces.bean.SessionScoped;
 import br.edu.up.aula4etapa.dao.DedicadoDao;
 import br.edu.up.aula4etapa.dao.PedidoDao;
 import br.edu.up.aula4etapa.dao.PlanoCompartilhadoDao;
+import br.edu.up.aula4etapa.dao.RevendaDao;
 import br.edu.up.aula4etapa.entity.Dedicado;
 import br.edu.up.aula4etapa.entity.ItemComp;
 import br.edu.up.aula4etapa.entity.Pedido;
 import br.edu.up.aula4etapa.entity.PlanoComp;
+import br.edu.up.aula4etapa.entity.Revenda;
 
 
 @ManagedBean(name = "mBeanCarrinho")
@@ -20,8 +22,8 @@ import br.edu.up.aula4etapa.entity.PlanoComp;
 public class MBeanCarrinho {
 
 	 private ArrayList<ItemComp> itens = new ArrayList<ItemComp>();
-	 private ArrayList<Dedicado> intensDedic = new ArrayList<Dedicado>(); 
-	
+/*	 private ArrayList<Dedicado> intensDedic = new ArrayList<Dedicado>(); 
+	 private ArrayList<Revenda> intensReve = new ArrayList<Revenda>();*/
 	private boolean win;
 	private boolean linx;
 	private String msg;
@@ -52,9 +54,13 @@ public class MBeanCarrinho {
 		
 		Dedicado dedic = new DedicadoDao().buscar(id);
 		
+		Revenda revenda = new RevendaDao().buscar(id);
+		
 		ItemComp item = new ItemComp();
 		
 		item.setDedic(dedic);
+		
+		item.setRevenda(revenda);
 		
 		item.setPlanocomp(plano);
 

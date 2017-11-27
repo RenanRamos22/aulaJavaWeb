@@ -66,7 +66,7 @@ String caminhoImagem = "";
 	
 	else {
 		
-		plano.setQtdDom("- Ate "+qtdDom+" Site(s)");
+		plano.setQtdDom("Ate "+qtdDom+" Site(s)");
 	}
 	
 	if(qtdMsq == null || qtdMsq== 0) {
@@ -166,7 +166,7 @@ String caminhoImagem = "";
 		this.bancoSql = plano.getBancoSql();
 		
 		
-		return "descricao.jsf";
+		return "descricaoRevenda.jsf";
 	}
 	private Integer id;
 	private Date data;

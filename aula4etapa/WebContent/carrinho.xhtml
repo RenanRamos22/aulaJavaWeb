@@ -35,12 +35,12 @@
   <ui:repeat var="item" value="#{mBeanCarrinho.itens}">
   
     <tr>
-      <th scope="row">#{item.planocomp.id}#{item.dedic.id}</th>
-      <td><h:graphicImage styleClass="imgCarrinho"   value="ServletImagemDedicado?id=#{item.dedic.id}"/><h:graphicImage  styleClass="imgCarrinho"   value="ServletImagem?id=#{item.planocomp.id}" /></td>
-      <td>#{item.planocomp.nome}#{item.dedic.nome}</td>
+      <th scope="row">#{item.planocomp.id}#{item.dedic.id}#{item.revenda.id}</th>
+      <td><h:graphicImage styleClass="imgCarrinho"   value="ServletImagemDedicado?id=#{item.dedic.id}"/><h:graphicImage  styleClass="imgCarrinho"   value="ServletImagem?id=#{item.planocomp.id}" /><h:graphicImage styleClass="imgCarrinho"   value="ServletImagemRevenda?id=#{item.revenda.id}"/></td>
+      <td>#{item.planocomp.nome}#{item.dedic.nome}#{item.revenda.nome}</td>
       <td>#{item.dominio}</td>
       <td>#{item.plataforma}</td>
-      <td>R$<h:outputText value="#{item.planocomp.valor}"> <f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber></h:outputText><h:outputText value="#{item.dedic.valor}"> <f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber></h:outputText></td>
+      <td>R$<h:outputText value="#{item.planocomp.valor}"> <f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber></h:outputText><h:outputText value="#{item.dedic.valor}"> <f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber></h:outputText><h:outputText value="#{item.revenda.valor}"> <f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber></h:outputText></td>
       <td><input type="submit" class="btn btn-danger" value="Remover" id="btnRemover" jsf:action="#{mBeanCarrinho.removerItem(item)}"></input></td>
     </tr>
    
