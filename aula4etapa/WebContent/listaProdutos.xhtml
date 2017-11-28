@@ -29,7 +29,7 @@
       <div class="card-body" >
         <h4 class="card-title"><h:outputText value="#{plano.nome}" /></h4>
         <p class="card-text"><h:outputText value="#{plano.qtdDom}" /></p>
-        <p class="card-text">- <h:outputText value="#{plano.hd}" /> de espaço em disco</p>
+        <p class="card-text">- <h:outputText value="#{plano.hd}" /> espaço em disco</p>
         <p class="card-text">- Windows ou Linux</p>
         <p class="card-text"><h:outputText value="#{plano.qtdMsq}" /> #{plano.bancoMsql}</p>
          <p class="card-text"><h:outputText value="#{plano.qtdSql}" />#{plano.bancoSql} </p>
@@ -66,7 +66,7 @@
       <div class="card-body" >
         <h4 class="card-title"><h:outputText value="#{dedic.nome}" /></h4>
         <p class="card-text"><h:outputText value="#{dedic.qtdDom}" /> #{dedic.ilim}</p>
-        <p class="card-text">- <h:outputText value="#{dedic.hd}" /> de espaço em disco</p>
+        <p class="card-text">- <h:outputText value="#{dedic.hd}" /> espaço em disco</p>
         <p class="card-text">- <h:outputText value="#{dedic.ram}" /> de Memoria RAM</p>
         <p class="card-text" style="color:#148eff">#{dedic.ip}</p>
         <p class="card-text" >Windows ou Linux</p>
@@ -96,10 +96,10 @@
       <div class="card-body" >
         <h4 class="card-title"><h:outputText value="#{revenda.nome}" /></h4>
         <p class="card-text"><h:outputText value="#{revenda.qtdDom}" /></p>
-        <p class="card-text">- <h:outputText value="#{revenda.hd}" /> de espaço em disco</p>
-        <p class="card-text">- Windows ou Linux</p>
+        <p class="card-text">- <h:outputText value="#{revenda.hd}" /> espaço em disco</p>
         <p class="card-text">- <h:outputText value="#{revenda.qtdMsq}" /> #{revenda.bancoMsql}</p>
         <p class="card-text">- <h:outputText value="#{revenda.qtdSql}" />#{revenda.bancoSql} </p>
+        <p class="card-text">- Windows ou Linux</p>
         <p class="card-text">#{revenda.email}</p>
          <p class="card-text" style="color:#148eff">#{revenda.softc}</p>
         <input type="submit" jsf:id="btnContratar"

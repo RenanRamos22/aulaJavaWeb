@@ -22,8 +22,8 @@ import br.edu.up.aula4etapa.entity.Revenda;
 public class MBeanCarrinho {
 
 	 private ArrayList<ItemComp> itens = new ArrayList<ItemComp>();
-/*	 private ArrayList<Dedicado> intensDedic = new ArrayList<Dedicado>(); 
-	 private ArrayList<Revenda> intensReve = new ArrayList<Revenda>();*/
+	 private ArrayList<Dedicado> intensDedic = new ArrayList<Dedicado>(); 
+	 private ArrayList<Revenda> intensReve = new ArrayList<Revenda>();
 	private boolean win;
 	private boolean linx;
 	private String msg;
@@ -63,6 +63,31 @@ public class MBeanCarrinho {
 		item.setRevenda(revenda);
 		
 		item.setPlanocomp(plano);
+
+		item.setQuantidade(1);
+		
+		item.setDominio(Dom);
+		
+		item.setPlataforma(plat);
+
+		itens.add(item);
+		
+		return "carrinho.jsf";
+	}
+	
+public String adicionarDedicado(Integer id) {
+		
+		
+		
+		Dedicado dedic = new DedicadoDao().buscar(id);
+		
+		
+		
+		ItemComp item = new ItemComp();
+		
+		item.setDedic(dedic);
+		
+		
 
 		item.setQuantidade(1);
 		

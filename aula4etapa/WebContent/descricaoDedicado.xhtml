@@ -24,7 +24,7 @@
         Direito a Hospedar até <h:outputText value="#{mBeanDedic.qtdDom}"/> Site(Domínio).
       </p>
       <p>
-        <h:outputText value="#{mBeanDedic.hd}"/> de espaço em disco (Armazenamento de Arquivos e E-mails)
+        <h:outputText value="#{mBeanDedic.hd}"/> espaço em disco (Armazenamento de Arquivos e E-mails)
       </p>
       <p>
         <h:outputText value="#{mBeanDedic.ram}"/> Memoria RAM
@@ -62,7 +62,7 @@
       </div>
       <h3>Descrição</h3>
       <p class="text-justify"><h:outputText value="#{mBeanDedic.descr}"/></p>
-      <input type="submit" class="btn btn-primary btn-lg btn-block" value="Adicionar ao Carrinho" jsf:action="#{mBeanCarrinho.adicionar(mBeanDedic.id)}"/>
+      <input type="submit" class="btn btn-primary btn-lg btn-block" value="Adicionar ao Carrinho" jsf:action="#{mBeanCarrinho.adicionarDedicado(mBeanDedic.id)}"/>
       <a href="listaProdutos.jsf" class="btn btn-secondary btn-lg btn-block">Voltar para Lista</a>    
     </div>
 </div> 

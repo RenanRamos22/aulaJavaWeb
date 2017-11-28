@@ -53,7 +53,6 @@ public class MBeanPlanoDedicado {
 		dedic.setId(this.id);
 		dedic.setData(data);
 		dedic.setNome(nome);
-		dedic.setHd(hd);
 		dedic.setRam(ram);
 		dedic.setValor(valor);
 		dedic.setImgUrl(caminhoImagem);
@@ -63,8 +62,10 @@ public class MBeanPlanoDedicado {
 		// Ent�o � adicionado a string na lista
 		// Se n�o estiver ent�o � atribuido a lista a quantidade digitada
 		
-		if(qtdDom.equals("0")) {
-			dedic.setQtdDom("- Não possui Site");
+		if(hd == null) {
+			hd = "Não possui ";
+		}else {
+			dedic.setHd(hd);
 		}
 		if(domIlim) {
 		
@@ -75,9 +76,11 @@ public class MBeanPlanoDedicado {
 		}
 		
 		else{
-			
+			if(qtdDom.equals("0")) {
+				dedic.setQtdDom("- Não possui Site");
+			}else {
 			dedic.setQtdDom("- Até "+qtdDom+" Site(s)");
-			
+			}
 		}
 		
 		

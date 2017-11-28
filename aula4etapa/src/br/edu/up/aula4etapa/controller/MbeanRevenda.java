@@ -55,11 +55,16 @@ String caminhoImagem = "";
 	plano.setId(this.id);
 	plano.setData(data);
 	plano.setNome(nome);
-	plano.setHd(hd);
 	plano.setValor(valor);
 	plano.setDesc(desc);
 	plano.setImgUrl(caminhoImagem);
-
+	
+	if(hd.equals("NULL")) {
+		plano.setHd("Não possui ");
+	}else {
+		plano.setHd(hd);
+	}
+	
 	if(qtdDom.equals("0")) {
 		plano.setQtdDom("- Não possui Site");
 	}
@@ -136,7 +141,7 @@ String caminhoImagem = "";
 		this.id = plano.getId();
 		this.data = plano.getData();
 		this.nome = plano.getNome();
-		this.qtdDom = plano.getQtdDom();
+		//this.qtdDom = plano.getQtdDom();
 		this.hd = plano.getHd();
 		this.qtdMsq = plano.getQtdMsq();
 		this.qtdSql = plano.getQtdSql();

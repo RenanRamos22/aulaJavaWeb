@@ -15,16 +15,17 @@
 <form jsf:id="form">
 
 <input type="hidden" jsf:id="id" jsf:value="#{mBeanRevenda.id}"/>
- <h1 class="h1_smart"><h:outputText value="#{mBeanRevenda.nome}"></h:outputText></h1>
+ <h1 class="h1_smart_revenda"><h:outputText value="#{mBeanRevenda.nome}"></h:outputText></h1>
  <div class="conteudo">
     <div class="descr" >  
-     <h3>Recursos:</h3><br/>
-      <h5>Hospedagem em servidor Compartilhado</h5>
+    <h3>Seja Nosso Revendedor</h3><br/>
+     <h4>Recursos:</h4><br/>
+      
       <p>
-        Direito a Hospedar <h:outputText value="#{mBeanRevenda.qtdDom}"/>(Domínio).
+        Direito a Hospedar <h:outputText value="#{mBeanRevenda.qtdDom}"/>/Dominio(s).
       </p>
       <p>
-        <h:outputText value="#{mBeanRevenda.hd}"/> de espaço em disco (Armazenamento de Arquivos e E-mails)
+        <h:outputText value="#{mBeanRevenda.hd}"/> espaço em disco (Armazenamento de Arquivos e E-mails)
       </p>
       <h5>Base de Dados:</h5>
       <p>
@@ -54,8 +55,8 @@
 				</div>
     </div>
     
-    <div  id="divContainer" align="center">
-      <div class="img_prod_desc">
+    <div  id="divContainer_revenda" align="center">
+      <div class="img_prod_desc_revenda">
      <h:graphicImage   value="ServletImagemRevenda?id=#{mBeanRevenda.id}"/>
       </div>
       <h3>Descrição</h3>

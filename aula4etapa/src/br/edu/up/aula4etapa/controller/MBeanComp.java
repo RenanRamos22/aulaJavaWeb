@@ -57,11 +57,15 @@ public class MBeanComp {
 		plano.setId(this.id);
 		plano.setData(data);
 		plano.setNome(nome);
-		plano.setHd(hd);
 		plano.setValor(valor);
 		plano.setDesc(desc);
 		plano.setImgUrl(caminhoImagem);
 		
+		if(hd == null) {
+			hd = "Não possui ";
+		}else {
+			plano.setHd(hd);
+		}
 		if(qtdDom.equals("0")) {
 			plano.setQtdDom("- Não possui Site");
 		}
@@ -140,7 +144,7 @@ public class MBeanComp {
 		this.id = plano.getId();
 		this.data = plano.getData();
 		this.nome = plano.getNome();
-		this.qtdDom = plano.getQtdDom();
+		//this.qtdDom = plano.getQtdDom();
 		this.hd = plano.getHd();
 		this.qtdMsq = plano.getQtdMsq();
 		this.qtdSql = plano.getQtdSql();
