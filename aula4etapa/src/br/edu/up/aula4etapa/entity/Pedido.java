@@ -18,8 +18,8 @@ public class Pedido {
 	private Integer id;
 	private Date data;
 	
-	//@ManyToOne
-	//private Usuario usuario;
+	@ManyToOne
+	private Usuario usuario;
 	
 	@OneToMany (mappedBy = "pedido", cascade = CascadeType.ALL)
 	private List<ItemComp> itens;
@@ -46,6 +46,14 @@ public class Pedido {
 
 	public void setItens(List<ItemComp> itens) {
 		this.itens = itens;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	

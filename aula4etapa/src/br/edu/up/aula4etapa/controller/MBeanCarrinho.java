@@ -3,8 +3,11 @@ package br.edu.up.aula4etapa.controller;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import br.edu.up.aula4etapa.dao.DedicadoDao;
 import br.edu.up.aula4etapa.dao.PedidoDao;
@@ -15,6 +18,7 @@ import br.edu.up.aula4etapa.entity.ItemComp;
 import br.edu.up.aula4etapa.entity.Pedido;
 import br.edu.up.aula4etapa.entity.PlanoComp;
 import br.edu.up.aula4etapa.entity.Revenda;
+import br.edu.up.aula4etapa.entity.Usuario;
 
 
 @ManagedBean(name = "mBeanCarrinho")
@@ -24,6 +28,7 @@ public class MBeanCarrinho {
 	 private ArrayList<ItemComp> itens = new ArrayList<ItemComp>();
 	 private ArrayList<Dedicado> intensDedic = new ArrayList<Dedicado>(); 
 	 private ArrayList<Revenda> intensReve = new ArrayList<Revenda>();
+	 
 	private boolean win;
 	private boolean linx;
 	private String msg;
@@ -31,6 +36,9 @@ public class MBeanCarrinho {
 	private String plat;
 	
 	public String salvarPedido() {
+		//HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+
+		//Usuario u = (Usuario) req.getSession().getAttribute("usuario");
 		
 		Pedido p = new Pedido();
 		p.setData(new Date());
@@ -45,22 +53,24 @@ public class MBeanCarrinho {
 		
 		new PedidoDao().inserir(p);
 		
-		return"";
+		
+		
+		return"pedidoFinalizado.jsf";
 	}
 	
 	public String adicionar(Integer id) {
 		
 		PlanoComp plano = new PlanoCompartilhadoDao().buscar(id);
 		
-		Dedicado dedic = new DedicadoDao().buscar(id);
+		//Dedicado dedic = new DedicadoDao().buscar(id);
 		
-		Revenda revenda = new RevendaDao().buscar(id);
+		//Revenda revenda = new RevendaDao().buscar(id);
 		
 		ItemComp item = new ItemComp();
 		
-		item.setDedic(dedic);
+		//item.setDedic(dedic);
 		
-		item.setRevenda(revenda);
+		//item.setRevenda(revenda);
 		
 		item.setPlanocomp(plano);
 
@@ -99,10 +109,35 @@ public String adicionarDedicado(Integer id) {
 		
 		return "carrinho.jsf";
 	}
+
+public String adicionarRevenda(Integer id) {
+	
+	
+	
+	Revenda revenda = new RevendaDao().buscar(id);
+	
+	
+	
+	ItemComp item = new ItemComp();
+	
+	item.setRevenda(revenda);
+	
+	
+
+	item.setQuantidade(1);
+	
+	item.setDominio(Dom);
+	
+	item.setPlataforma(plat);
+
+	itens.add(item);
+	
+	return "carrinho.jsf";
+}
 	
 	public String removerItem(ItemComp item) {
 		itens.remove(item);
-		return "carrinho.jsf";
+		return "";
 	}
 	
 	public ArrayList<ItemComp> getItens() {
