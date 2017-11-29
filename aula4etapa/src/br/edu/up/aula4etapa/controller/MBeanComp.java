@@ -172,6 +172,8 @@ public class MBeanComp {
 		this.desc = plano.getDesc();
 		this.bancoMsql = plano.getBancoMsql();
 		this.bancoSql = plano.getBancoSql();
+		this.email = plano.getEmail();
+		this.softc = plano.getSoftc();
 		
 		
 		return "descricao.jsf";

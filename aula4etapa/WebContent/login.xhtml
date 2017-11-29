@@ -18,7 +18,7 @@
 
 			
 
-			<div style="width: 50%; margin:0 auto;">
+			<div style="width: 50%; margin-left:35%;margin-top:10%;">
 
 				<h:messages styleClass="alert alert-danger">
 
@@ -26,35 +26,23 @@
 
 			
 
-				<h2 class="form-signin-heading">Login</h2><br/>
-
-				<label for="email" class="sr-only">E-mail</label> 
-
-				<input type="email" jsf:id="email"
-
-				 jsf:value="#{mBeanUsuario.email}"
-
-				 class="form-control" placeholder="E-mail" /><br/>
-
-					
-
-				<label for="senha" class="sr-only">Senha</label> 				
-
-				<input type="password" jsf:id="senha" 
-
-				jsf:value="#{mBeanUsuario.senha}"
-
-				class="form-control" /><br/>
-
-				
-
+				<div class="form-group">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e-mail" jsf:id="email" jsf:value="#{mBeanUsuario.email}"/>
+    <small id="emailHelp" class="form-text text-muted">Informe o endereço de e-mail completo</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Senha</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" jsf:id="senha" jsf:value="#{mBeanUsuario.senha}"/>
+  </div>
+  
 				<input type="submit" 
 
 					jsf:id="logar"
 
 					jsf:action="#{mBeanUsuario.login}"
 
-					class="btn btn-lg btn-primary btn-block" 
+					class="btn btn-primary"
 
 					value="Logar"/>
 

@@ -12,6 +12,7 @@ public class Usuario {
 	private Integer id;
 	private String email;
 	private String senha;
+	
 	public Integer getId() {
 		return id;
 	}

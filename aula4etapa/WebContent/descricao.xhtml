@@ -19,9 +19,9 @@
  <div class="conteudo">
     <div class="descr" >  
      <h3>Recursos:</h3><br/>
-      <h5>Hospedagem em servidor Compartilhado</h5>
+      <h5>Hospedagem em servidor Compartilhado</h5><br/>
       <p>
-        Direito a Hospedar até <h:outputText value="#{mBeanComp.qtdDom}"/> Site(Domínio).
+        Direito a Hospedar <h:outputText value="#{mBeanComp.qtdDom}"/> (Domínio).
       </p>
       <p>
         <h:outputText value="#{mBeanComp.hd}"/> espaço em disco (Armazenamento de Arquivos e E-mails)
@@ -31,9 +31,16 @@
       <h:outputText value="#{mBeanComp.qtdMsq}" /> <h:outputText value="#{mBeanComp.bancoMsql}" /> <br/>
       <h:outputText value="#{mBeanComp.qtdSql}" /> <h:outputText value="#{mBeanComp.bancoSql}" />
       </p>
+      <p style="color:00aeff;">
+      <strong><h:outputText value="#{mBeanComp.softc}" /></strong><br/>
+      <strong><h:outputText value="#{mBeanComp.email}" /></strong><br/>
+      </p >
       <label>Digite seu Dominio:</label><br/>
       <input type="text" jsf:id="nome" jsf:value="#{mBeanCarrinho.dom}"
 					placeholder="dominio.com.br" class="form-control" required="required" /><br/>
+					<h:messages styleClass="alert alert-danger">
+
+				</h:messages><br/>
       <h4>Servidores:</h4>
       
       

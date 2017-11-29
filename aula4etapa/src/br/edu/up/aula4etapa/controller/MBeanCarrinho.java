@@ -1,5 +1,6 @@
 package br.edu.up.aula4etapa.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -35,15 +36,14 @@ public class MBeanCarrinho {
 	private String Dom;
 	private String plat;
 	
-	public String salvarPedido() {
-		//HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+	public String salvarPedido()  {
+		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		Usuario u = (Usuario) req.getSession().getAttribute("usuario");
 
-		//Usuario u = (Usuario) req.getSession().getAttribute("usuario");
-		
 		Pedido p = new Pedido();
 		p.setData(new Date());
 		p.setItens(itens);	
-		//p.setUsuario(u);
+		p.setUsuario(u);
 		
 		for (ItemComp i : itens) {
 
@@ -53,12 +53,15 @@ public class MBeanCarrinho {
 		
 		new PedidoDao().inserir(p);
 		
+		FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+				"Pedido Finalizado com Sucesso",""));
+	 
 		
-		
-		return"pedidoFinalizado.jsf";
+		return"";
+		 
 	}
 	
-	public String adicionar(Integer id) {
+	public void adicionar(Integer id) throws IOException {
 		
 		PlanoComp plano = new PlanoCompartilhadoDao().buscar(id);
 		
@@ -76,13 +79,29 @@ public class MBeanCarrinho {
 
 		item.setQuantidade(1);
 		
+		
 		item.setDominio(Dom);
 		
+		if(plat.equals("")) {
+			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Escolha uma plataforma",""));
+		 
+			 new MBeanComp().carregarPlano(plano);
+			 
+		
+			
+		}else {
 		item.setPlataforma(plat);
-
+		
 		itens.add(item);
 		
-		return "carrinho.jsf";
+		FacesContext.
+		getCurrentInstance().
+getExternalContext().redirect("carrinho.jsf");
+		}
+		
+		
+		
 	}
 	
 public String adicionarDedicado(Integer id) {
@@ -103,7 +122,17 @@ public String adicionarDedicado(Integer id) {
 		
 		item.setDominio(Dom);
 		
+		if(plat.equals("")) {
+			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Escolha uma plataforma",""));
+		 
+			 new MBeanPlanoDedicado().carregaDedicado(dedic);
+			 
+			 return"";
+			
+		}else {
 		item.setPlataforma(plat);
+		}
 
 		itens.add(item);
 		
@@ -128,7 +157,17 @@ public String adicionarRevenda(Integer id) {
 	
 	item.setDominio(Dom);
 	
+	if(plat.equals("")) {
+		FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+				"Escolha uma plataforma",""));
+	 
+		 new MbeanRevenda().carregarPlano(revenda);
+		 
+		 return"";
+		
+	}else {
 	item.setPlataforma(plat);
+	}
 
 	itens.add(item);
 	

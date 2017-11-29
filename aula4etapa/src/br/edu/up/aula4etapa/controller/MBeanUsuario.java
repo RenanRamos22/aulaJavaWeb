@@ -20,7 +20,7 @@ public class MBeanUsuario {
 		
 		if(usuario == null) {
 			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Login ou senha inválidos!",""));
+					"Login ou senha invï¿½lidos!",""));
 			
 			 
 			return"";
@@ -41,20 +41,21 @@ public class MBeanUsuario {
 		Usuario u = new Usuario();
 		
 		
+		
+		u.setId(this.id);
+		u.setEmail(email);
+		u.setSenha(senha);
+		
 		HttpServletRequest req = (HttpServletRequest)
 				FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		
 		req.getSession().setAttribute("usuario", u);
 		
 		
-		u.setId(this.id);
-		u.setEmail(email);
-		u.setSenha(senha);
-		
 		new UsuarioDao().inserir(u);
 		
 		
-		return""+req.getSession().getAttribute("pagina");
+		return"carrinho.jsf";
 		
 		
 	}

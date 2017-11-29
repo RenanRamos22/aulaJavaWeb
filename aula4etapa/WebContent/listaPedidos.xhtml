@@ -13,7 +13,7 @@
 
 <form jsf:id="form" method="post" >
 
- <h1 class="h1_smart">Carrinho</h1>
+ <h1 class="h1_smart">Lista de Pedidos</h1>
  
  <div class="content">
 
@@ -21,13 +21,9 @@
   <thead>
    
     <tr>
-      <th scope="col">Codigo do produto</th>
-      <th scope="col">imagem</th>
-      <th scope="col">Plano</th>
-      <th scope="col">Dominio</th>
-      <th scope="col">Plataforma</th>
-      <th scope="col">Valor/Periodicidade</th>
-      <th scope="col"></th>
+      <th scope="col">Codigo do Pedido</th>
+      <th scope="col">Realizado em:</th>
+      <th scope="col">Id do usuario</th>
     </tr>
   </thead>
   <tbody>
@@ -40,8 +36,7 @@
       <td>#{item.planocomp.nome}#{item.dedic.nome}#{item.revenda.nome}</td>
       <td>#{item.dominio}</td>
       <td>#{item.plataforma}</td>
-      <td>R$<h:outputText value="#{item.planocomp.valor}"> <f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber></h:outputText><h:outputText value="#{item.dedic.valor}"> <f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber></h:outputText><h:outputText value="#{item.revenda.valor}"> <f:convertNumber locale="pt_BR" minFractionDigits="2"></f:convertNumber></h:outputText></td>
-      <td><input type="submit" class="btn btn-danger" value="Remover" id="btnRemover" jsf:action="#{mBeanCarrinho.removerItem(item)}"></input></td>
+      
     </tr>
    
     </ui:repeat>
