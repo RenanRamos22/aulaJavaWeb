@@ -1,0 +1,9 @@
+Apache Tomcat V8.5
+Dynamic web module 3.0
+JSF v2.2
+JSF Mapping Patterns *.jsf
+JSF Implementation Library type:Disable -> colocar o java.faces.jar em WebContent/WEB-INF/lib/
+
+H2:
+Saved Settings: Generic H2 (server)
+colocar o drive do H2 junto as libs do projeto (h2/bin/h2(versão).jar)
