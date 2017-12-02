@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -29,6 +30,7 @@ public class MBeanCarrinho {
 	 private ArrayList<ItemComp> itens = new ArrayList<ItemComp>();
 	 private ArrayList<Dedicado> intensDedic = new ArrayList<Dedicado>(); 
 	 private ArrayList<Revenda> intensReve = new ArrayList<Revenda>();
+	 private ArrayList<Pedido> listPedido = new ArrayList<Pedido>();
 	 
 	private boolean win;
 	private boolean linx;
@@ -36,6 +38,10 @@ public class MBeanCarrinho {
 	private String Dom;
 	private String plat;
 	
+	@PostConstruct
+	public void carregar() {
+		listPedido = new PedidoDao().listar();
+	}
 	public String salvarPedido()  {
 		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		Usuario u = (Usuario) req.getSession().getAttribute("usuario");
@@ -53,11 +59,13 @@ public class MBeanCarrinho {
 		
 		new PedidoDao().inserir(p);
 		
-		FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR,
-				"Pedido Finalizado com Sucesso",""));
-	 
 		
-		return"";
+		
+		listPedido = new PedidoDao().listar();
+		itens = new ArrayList<ItemComp>();
+		
+		
+		return"pedidoFinalizado.jsf";
 		 
 	}
 	
@@ -225,6 +233,12 @@ public String adicionarRevenda(Integer id) {
 
 	public void setPlat(String plat) {
 		this.plat = plat;
+	}
+	public ArrayList<Pedido> getListPedido() {
+		return listPedido;
+	}
+	public void setListPedido(ArrayList<Pedido> listPedido) {
+		this.listPedido = listPedido;
 	}
 	
 	

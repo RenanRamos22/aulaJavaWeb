@@ -28,35 +28,20 @@
   </thead>
   <tbody>
   
-  <ui:repeat var="item" value="#{mBeanCarrinho.itens}">
+  <ui:repeat var="pedido" value="#{mBeanCarrinho.listPedido}">
   
     <tr>
-      <th scope="row">#{item.planocomp.id}#{item.dedic.id}#{item.revenda.id}</th>
-      <td><h:graphicImage styleClass="imgCarrinho"   value="ServletImagemDedicado?id=#{item.dedic.id}"/><h:graphicImage  styleClass="imgCarrinho"   value="ServletImagem?id=#{item.planocomp.id}" /><h:graphicImage styleClass="imgCarrinho"   value="ServletImagemRevenda?id=#{item.revenda.id}"/></td>
-      <td>#{item.planocomp.nome}#{item.dedic.nome}#{item.revenda.nome}</td>
-      <td>#{item.dominio}</td>
-      <td>#{item.plataforma}</td>
+      <th scope="row">#{pedido.id}</th>
+      <td><h:outputText value="#{pedido.data}"><f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"></f:convertDateTime></h:outputText> </td>
+      <td>#{pedido.usuario.id}</td>
+      
       
     </tr>
    
     </ui:repeat>
-    <tr>
-    	<th scope="row"></th>
-    	<td ><input type="submit" jsf:id="salvarPedido" jsf:action="#{mBeanCarrinho.salvarPedido}" value="Finalizar Compra" class="btn btn-primary btn-lg " /></td>
-    	<td ></td>
-    	<td ></td>
-    	<td ></td>
-    	<td ><a href="listaProdutos.jsf" class="btn btn-secondary btn-lg ">Continuar Comprando</a></td>
-    	<td ></td>
-    </tr>
+   
   </tbody>
 </table>
-
-
-    
-      
-         
-   
 </div>  
 <h:messages styleClass="alert alert-success">
 

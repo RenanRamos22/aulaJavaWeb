@@ -37,7 +37,7 @@ public class LoginFilter  implements Filter  {
 			req.getSession().setAttribute("pagina", "carrinho.jsf");
 			res.sendRedirect("login.jsf");
 		}
-		
+		arg2.doFilter(arg0, arg1);
 	}
 
 	@Override

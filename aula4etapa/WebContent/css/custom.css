@@ -36,12 +36,9 @@ header
 }
 #img_card_dedicado {
   background-color: #aa0000;
-
-
   height: 180px;
   padding-top:60px;
   padding-left:60px;
-
   color: white;
   text-shadow: 0 2px  #000000;
 }
@@ -221,6 +218,32 @@ h3{
 }
 .imgCarrinho{
 	width:100px;
+		
+}.imgCarrinho[src="ServletImagemDedicado?id="]{
+
+	display: none;
+
+}
+
+.imgCarrinho[src="ServletImagem?id="]{
+
+	display: none;
+
+}
+
+.imgCarrinho[src="ServletImagemRevenda?id="]{
+
+	display: none;
+
+}
+h3{
 	
+	background-color: white;
+	border:1px solid black;
+	border-radius: 5px;
+	padding:10px;
+	width: 100%;
+	text-align: center;
+	max-width: 1300px;
 	
 }
