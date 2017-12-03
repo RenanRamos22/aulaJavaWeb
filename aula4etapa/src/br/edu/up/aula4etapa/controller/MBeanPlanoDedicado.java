@@ -155,6 +155,7 @@ public class MBeanPlanoDedicado {
 		this.ip = dedic.getIp();
 		this.valor = dedic.getValor();
 		this.descr = dedic.getDescr();
+		this.ilim = dedic.getIlim();
 		
 		return"descricaoDedicado.jsf";
 	}
