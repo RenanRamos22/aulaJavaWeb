@@ -85,7 +85,7 @@ public class MBeanCarrinho {
 		
 		item.setPlanocomp(plano);
 
-		item.setQuantidade(1);
+		item.setQuantidade(+1);
 		
 		
 		item.setDominio(Dom);

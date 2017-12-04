@@ -24,6 +24,7 @@
       <th scope="col">Codigo do Pedido</th>
       <th scope="col">Realizado em:</th>
       <th scope="col">Id do usuario</th>
+      <th scope="col">Itens do Pedido</th>
     </tr>
   </thead>
   <tbody>
@@ -34,6 +35,7 @@
       <th scope="row">#{pedido.id}</th>
       <td><h:outputText value="#{pedido.data}"><f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"></f:convertDateTime></h:outputText> </td>
       <td>#{pedido.usuario.id}</td>
+      <td><ui:repeat var="item" value="#{pedido.itens}">#{item.id},</ui:repeat> </td>
       
       
     </tr>
