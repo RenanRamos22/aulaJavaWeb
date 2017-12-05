@@ -19,6 +19,7 @@ public class ItemComp {
 	private Revenda revenda;
 	@ManyToOne
 	private Pedido pedido;
+	
 	private Integer quantidade;
 	private String plataforma;
 	

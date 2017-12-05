@@ -64,6 +64,7 @@ public class MBeanCarrinho {
 		listPedido = new PedidoDao().listar();
 		itens = new ArrayList<ItemComp>();
 		
+	
 		
 		return"pedidoFinalizado.jsf";
 		 

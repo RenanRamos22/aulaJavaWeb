@@ -24,18 +24,20 @@
       <th scope="col">Codigo do Pedido</th>
       <th scope="col">Realizado em:</th>
       <th scope="col">Id do usuario</th>
-      <th scope="col">Itens do Pedido</th>
+      <th scope="col">Nome do Plano Escolhido</th>
+      <th scope="col">Dominio</th>
     </tr>
   </thead>
   <tbody>
-  
+ 
   <ui:repeat var="pedido" value="#{mBeanCarrinho.listPedido}">
-  
+   
     <tr>
       <th scope="row">#{pedido.id}</th>
       <td><h:outputText value="#{pedido.data}"><f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"></f:convertDateTime></h:outputText> </td>
       <td>#{pedido.usuario.id}</td>
-      <td><ui:repeat var="item" value="#{pedido.itens}">#{item.id},</ui:repeat> </td>
+      <td><ui:repeat var="item" value="#{pedido.itens}">#{item.planocomp.nome}#{item.dedic.nome}#{item.revenda.nome},</ui:repeat> </td>
+      <td><ui:repeat var="item" value="#{pedido.itens}">#{item.dominio},</ui:repeat> </td>
       
       
     </tr>

@@ -20,7 +20,7 @@ public class MBeanUsuario {
 		
 		if(usuario == null) {
 			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Login ou senha inv�lidos!",""));
+					"Login ou senha incorretos!",""));
 			
 			 
 			return"";

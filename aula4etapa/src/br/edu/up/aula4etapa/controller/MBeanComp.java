@@ -62,12 +62,12 @@ public class MBeanComp {
 		plano.setImgUrl(caminhoImagem);
 		
 		if(hd == null) {
-			hd = "NÃ£o possui ";
+			hd = "Não possui ";
 		}else {
 			plano.setHd(hd);
 		}
 		if(qtdDom.equals("0")) {
-			plano.setQtdDom("- NÃ£o possui Site");
+			plano.setQtdDom("- Não possui Site");
 		}
 		
 		else {
@@ -77,7 +77,7 @@ public class MBeanComp {
 
 		if(qtdMsq == null || qtdMsq== 0) {
 			plano.setQtdMsq(qtdMsq = null);
-			plano.setBancoMsql("NÃ£o possui Banco de Dados MySQL");
+			plano.setBancoMsql("Não possui Banco de Dados MySQL");
 			}else {
 			plano.setQtdMsq(qtdMsq);
 			plano.setBancoMsql(" Banco de Dados MySQL");
@@ -85,7 +85,7 @@ public class MBeanComp {
 			
 		if(qtdSql == null || qtdSql== 0) {
 			plano.setQtdSql(qtdSql = null);
-			plano.setBancoSql("NÃ£o possui Banco de Dados SQL");
+			plano.setBancoSql("Não possui Banco de Dados SQL");
 			}else {
 				plano.setQtdSql(qtdSql);
 				plano.setBancoSql(" Banco de Dados SQL");
